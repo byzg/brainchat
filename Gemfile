@@ -38,10 +38,12 @@ group :assets do
 
   gem 'haml-rails'
   gem 'uglifier', '>= 1.0.3'
+  gem 'bootstrap-sass', '~> 2.3.2.1'
 end
 
 gem 'jquery-rails'
 gem 'inherited_resources'
+gem "i18n-missing_translations"
 
 
 # To use ActiveModel has_secure_password

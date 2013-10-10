@@ -1,0 +1,4 @@
+#chat_container
+  = form_for @message, url: chat_messages_path(resource), method: :post do |f|
+    = f.text_area :text
+    = f.submit

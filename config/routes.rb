@@ -11,8 +11,9 @@ Mailchat::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
+     resources :chats, only: [:index, :new, :create, :show] do
+       resources :messages, only: [:create]
+     end
   # Sample resource route with options:
   #   resources :products do
   #     member do
@@ -48,7 +49,7 @@ Mailchat::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'chats#index'
 
   # See how all your routes lay out with "rake routes"
 
