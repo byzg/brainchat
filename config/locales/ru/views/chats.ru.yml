@@ -2,3 +2,4 @@ ru:
   chats:
     index:
       new_chat_link: 'Созадть беседу'
+      new_user_link: 'Создать адресата'

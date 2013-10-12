@@ -1,3 +1,10 @@
+= link_to t('.new_user_link'), new_user_path, class: "btn btn-success"
 = link_to t('.new_chat_link'), new_chat_path, class: "btn btn-success"
 %br
+Беседы:
+%br
 =render partial: 'chats/chat', collection: collection
+%br
+Адресаты:
+%br
+= render partial: 'users/user', collection: @users
