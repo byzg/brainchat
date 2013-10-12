@@ -1,8 +1,10 @@
-class MessagesController < ApplicationController
+class MessagesController < InheritedResources::Base
+
+  respond_to :js, :only => :create
 
   def create
     @message = Chat.find(params[:chat_id]).messages.new(params[:message])
-    redirect_to chat_path(@message.chat) if @message.save
+    super
   end
 
 end
