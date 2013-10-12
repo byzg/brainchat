@@ -1,4 +1,9 @@
-#chat_container
-  = form_for @message, url: chat_messages_path(resource), method: :post do |f|
-    = f.text_area :text
-    = f.submit
+#chat-container
+  #chat-history
+    -(1..10).each do |i|
+      Строка #{i}
+      %br
+  = simple_form_for @message, url: chat_messages_path(resource), method: :post do |f|
+    = f.input :text, :input_html => { :cols => 15, :rows => 4 }
+    = f.submit class: 'btn btn-success'
+
