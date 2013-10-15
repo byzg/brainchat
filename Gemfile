@@ -37,10 +37,13 @@ end
 gem 'jquery-rails'
 gem 'inherited_resources'
 gem 'simple_form'
-gem "i18n-missing_translations"
+#gem "i18n-missing_translations"
 gem 'sass'
 gem 'sass-rails',   '~> 3.2.3'
 gem 'jquery-modal-rails'
+gem 'devise'
+gem 'devise-i18n-views'
+gem 'html2haml'
 
 
 ruby '2.0.0'

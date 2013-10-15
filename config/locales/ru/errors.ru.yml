@@ -1,0 +1,4 @@
+ru:
+  errors:
+    messages:
+      not_saved: '%{resource} не сохранен!'

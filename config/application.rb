@@ -33,8 +33,8 @@ module Mailchat
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.i18n.default_locale = :ru
 
-    require 'i18n/missing_translations'
-    config.app_middleware.use(I18n::MissingTranslations) if Rails.env.development?
+    #require 'i18n/missing_translations'
+    #config.app_middleware.use(I18n::MissingTranslations) if Rails.env.development?
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

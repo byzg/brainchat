@@ -1,0 +1,22 @@
+ru:
+  activerecord:
+    models:
+     user: 'Пользователь'
+    attributes:
+      user:
+        name: 'Имя'
+        email: 'E-mail'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: ' недопустимый (должен быть вида: mymail@mymail.mymail)'
+              not_found: ' не найден'
+            password:
+              too_short: ' должен содержать от %{count} символов'
+              blank: ' не может быть пустым'
+              confirmation: ' не совпадает с подтвержением'
+              invalid: ' должен состоять из латинских букв и содежать хотя бы одну цифру'

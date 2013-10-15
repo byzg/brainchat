@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+1)Не забыть изменить строку в файле config/environments/production.ru :
+#config.action_mailer.default_url_options = { :host => 'yourapp.heroku.com' }
+подробнее на:
+http://stackoverflow.com/questions/4114835/heroku-devise-missing-host-to-link-to-please-provide-host-parameter-or-set-d
+2)Научить девайс давать пароли по уже созданным имейлам
+</body>
+</html>
+
