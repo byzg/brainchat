@@ -15,6 +15,7 @@ ru:
             email:
               invalid: ' недопустимый (должен быть вида: mymail@mymail.mymail)'
               not_found: ' не найден'
+              blank: ' не может быть пустым'
             password:
               too_short: ' должен содержать от %{count} символов'
               blank: ' не может быть пустым'

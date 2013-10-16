@@ -4,3 +4,5 @@ ru:
       new_chat_link: 'Созадть беседу'
       new_user_link: 'Создать адресата'
       log_out: 'Выйти'
+      chats_list_label: 'Беседы'
+      users_list_label: 'Собеседники'

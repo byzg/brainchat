@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   validates :password, :format => { :with => /^[a-zA-Z0-9.-]+$/  }
+  has_many :chat_user_assignments
+  has_many :chats, through: :chat_user_assignments
 end
