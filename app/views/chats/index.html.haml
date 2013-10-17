@@ -1,5 +1,5 @@
 = link_to t('.new_user_link'), new_user_path, class: "btn btn-success"
-= link_to t('.new_chat_link'), new_chat_path, class: "btn btn-success"
+= link_to_modal t('.new_chat_link'), new_chat_path, class: "btn btn-success"
 = link_to t('.log_out'), destroy_user_session_path, method: 'delete'
 %br
 Беседы:
