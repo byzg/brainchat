@@ -1,0 +1,13 @@
+ru:
+  chosen_rails:
+    friends_data_placeholder: 'Из Ваших собеседников'
+    no_results_text: 'Ничего не найдено..'
+
+  devise:
+    failure:
+      user:
+        unauthenticated: 'Вы вышли'
+        invalid: 'Такая пара e-mail - пароль не найдена'
+    sessions:
+      user:
+        signed_in: 'Вы вошли'

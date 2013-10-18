@@ -6,9 +6,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
+                  :name
 
   validates :password, :format => { :with => /^[a-zA-Z0-9.-]+$/  }
   has_many :chat_user_assignments
   has_many :chats, through: :chat_user_assignments
+  has_many :user_friend_assignments
+  has_many :friends, :through => :user_friend_assignments
 end

@@ -27,6 +27,7 @@ group :test do
 end
 
 group :assets do
+  gem 'chosen-rails'
   gem 'jquery-ui-rails'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'haml-rails'

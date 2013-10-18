@@ -6,9 +6,9 @@
 %br
 =render partial: 'chats/chat', collection: collection
 %br
-Адресаты:
+Мои собеседники:
 %br
-= render partial: 'users/user', collection: @users
+= render partial: 'users/user', collection: current_user.friends
 
 
 -#.span8

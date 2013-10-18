@@ -1,12 +1,10 @@
 class ChatsController < InheritedResources::Base
 
   #respond_to :js, :only => :new
-
-  def index
-    @users = User.all
-  end
+  #before_filter :get_interlocutors_of_current_user, only: [:new, :index]
 
   def show
     @message = Message.new
   end
+
 end

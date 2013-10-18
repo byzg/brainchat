@@ -8,6 +8,9 @@ ru:
         email: 'E-mail'
         password: 'Пароль'
         password_confirmation: 'Подтверждение пароля'
+      chat:
+        users: 'Собеседники'
+        subject: 'Тема'
     errors:
       models:
         user:
@@ -21,3 +24,11 @@ ru:
               blank: ' не может быть пустым'
               confirmation: ' не совпадает с подтвержением'
               invalid: ' должен состоять из латинских букв и содежать хотя бы одну цифру'
+        user_friend_assignment:
+          attributes:
+            user_id:
+              taken: "Невозможно добавить дважды одного и того же собеседника"
+          custom_validation:
+            cannot_add_self: "Невозможно добавить себя"
+      messages:
+        record_invalid: 'Запись недействительна'

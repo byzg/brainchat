@@ -6,3 +6,6 @@ ru:
       log_out: 'Выйти'
       chats_list_label: 'Беседы'
       users_list_label: 'Собеседники'
+    new:
+      title: 'Создание беседы'
+      subject_placeholder: 'Введите тему'
