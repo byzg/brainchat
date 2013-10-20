@@ -16,7 +16,7 @@ Mailchat::Application.routes.draw do
      resources :chats, only: [:index, :new, :create, :show] do
        resources :messages, only: [:create]
      end
-    resources :user_friend_assignments, only: [:index]
+    resources :user_friend_assignments, only: [:index, :new]
      #resources :user_friend_assignment, only: [:index]
   # Sample resource route with options:
   #   resources :products do

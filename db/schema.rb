@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131019004554) do
+ActiveRecord::Schema.define(:version => 20131020230512) do
 
   create_table "chat_user_assignments", :force => true do |t|
     t.integer "chat_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20131019004554) do
     t.integer  "user_id"
     t.integer  "friend_id"
     t.datetime "created_at"
+    t.string   "friend_name"
   end
 
   add_index "user_friend_assignments", ["user_id", "friend_id"], :name => "index_user_friend_assignments_on_user_id_and_friend_id", :unique => true
