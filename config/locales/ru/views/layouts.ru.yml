@@ -1,1 +1,14 @@
 ru:
+  layouts:
+    application:
+      brand: 'BrainChat'
+      menu:
+        account:
+          edit: 'Редактировать'
+          logout: 'Выйти'
+        chats:
+          title: 'Беседы'
+          new: 'Создать новую'
+        friedns: 'Собеседники'
+
+

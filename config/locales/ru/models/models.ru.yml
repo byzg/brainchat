@@ -13,17 +13,22 @@ ru:
         subject: 'Тема'
     errors:
       models:
+        chat:
+          attributes:
+            users:
+#              blank: 'Беседа не существует без собеседников'
         user:
           attributes:
             email:
               invalid: ' недопустимый (должен быть вида: mymail@mymail.mymail)'
               not_found: ' не найден'
               blank: ' не может быть пустым'
+              taken: ' уже существует в базе данных'
             password:
               too_short: ' должен содержать от %{count} символов'
               blank: ' не может быть пустым'
               confirmation: ' не совпадает с подтвержением'
-              invalid: ' должен состоять из латинских букв и содежать хотя бы одну цифру'
+              invalid: ' должен состоять из латинских букв и содежать хотя бы одну цифру. Совет: проверте раскладку'
         user_friend_assignment:
           attributes:
             user_id:

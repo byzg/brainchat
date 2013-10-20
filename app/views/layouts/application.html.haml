@@ -10,29 +10,31 @@
       .navbar.navbar-static-top
         .navbar-inner
           .container
-            = link_to "На главную", root_path, class: 'brand'
+            = link_to t('.brand'), root_path, class: 'brand'
             #menu
               %ul.nav
                 %li= link_to 'Кнопка-ссылка', "#"
                 %li.divider-vertical
                 %li.dropdown
                   %a.dropdown-toggle{href: '#',:'data-toggle' => 'dropdown'}
-                    Выпадающий список 1
+                    = t('.menu.chats.title')
                     %b.caret
                   %ul.dropdown-menu
-                    %li= link_to 'Ссылка1', "#"
-                    %li= link_to 'Ссылка2', "#"
-                %li.dropdown
-                  %a.dropdown-toggle{href: '#',:'data-toggle' => 'dropdown'}
-                    Выпадающий список 2
-                    %b.caret
-                  %ul.dropdown-menu
-                    %li= link_to 'Ссылка1', "#"
-                    %li= link_to 'Ссылка2', "#"
+                    %li= link_to_modal t('.menu.chats.new'), new_chat_path
+                %li= link_to t('.menu.friedns'), user_friend_assignments_path
                 %li
                   %form.navbar-form.pull-left
                     %input.span2{type: "text", placeholder: "Поиск"}/
                     %button.btn{type: "submit"} Отправить
+            %ul.nav.pull-right
+              %li.dropdown
+                %a.dropdown-toggle{href: '#',:'data-toggle' => 'dropdown'}
+                  = current_user.email
+                  %b.caret
+                %ul.dropdown-menu
+                  %li= link_to t('.menu.account.edit'), "#"
+                  %li.divider
+                  %li= link_to t('.menu.account.logout'), destroy_user_session_path, method: 'delete'
     .container-fluid
       .row-fluid
         .messages= bootstrap_flash

@@ -2,23 +2,61 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+        .done {
+            text-decoration: line-through;
+        }
+    </style>
 </head>
 
 <body>
-1)Не забыть изменить строку в файле config/environments/production.ru :
-#config.action_mailer.default_url_options = { :host => 'yourapp.heroku.com' }
-подробнее на:
-http://stackoverflow.com/questions/4114835/heroku-devise-missing-host-to-link-to-please-provide-host-parameter-or-set-d
-2)Научить девайс давать пароли по уже созданным имейлам
-3) Лайтбокс на new беседы
-4) Сделать navbar
-5) валидация на беседу: должна кому-то принадлежать!
-6) доделать сообщения девайса подобно registration edit, кнопки и прочие бутсрап
-7) подтверждение регистрации по email
-8) в chosen-rails изменить placeholder и no_result_text
+<div>
+    1)Не забыть изменить строку в файле config/environments/production.ru :
+    #config.action_mailer.default_url_options = { :host => 'yourapp.heroku.com' }
+    подробнее на:
+    http://stackoverflow.com/questions/4114835/heroku-devise-missing-host-to-link-to-please-provide-host-parameter-or-set-d
+</div>
+<div>
+    2)Научить девайс давать пароли по уже созданным имейлам
+</div>
+<div>
+    3) Лайтбокс на new беседы
+</div>
+<div>
+    4) Сделать navbar
+</div>
+<div class='done'>
+    5) валидация на беседу: должна кому-то принадлежать!
+</div>
+<div>
+    5.1) Открывший беседу не считается
+</div>
 
+<div>
+    6) доделать сообщения девайса подобно registration edit, кнопки и прочие бутсрап
+</div>
+<div>
+    7) подтверждение регистрации по email
+</div>
+<div>
+    8) в chosen-rails изменить placeholder и no_result_text
+</div>
+<div>
+   9) при написании create для чата не забыть о валидации и алертах на вьюху
+</div>
+<div>
+
+</div>
+<div>
+
+</div>
+
+<br></br>
 В перспективе:
-1) Сделать поиск в chosen-rails AJAX - запросами
+<div>
+    1) Сделать поиск в chosen-rails AJAX - запросами
+</div>
+
 </body>
 </html>
 
