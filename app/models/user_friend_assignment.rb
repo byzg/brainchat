@@ -6,6 +6,6 @@ class UserFriendAssignment < ActiveRecord::Base
   validates :user_id, :uniqueness => {:scope => :friend_id}
 
   def cannot_add_self
-    errors.add(:base, I18n.t('activerecord.errors.models.user_friend_assignment.custom_validation.cannot_add_self')) if self.user_id == self.friend_id
+    errors.add(:base, I18n.t('models_custom.user_friend_assignments.validation.cannot_add_self')) if self.user_id == self.friend_id
   end
 end
