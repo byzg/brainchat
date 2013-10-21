@@ -2,7 +2,7 @@
   %h3= t('.title')
   = simple_form_for resource, url: chats_path(resource), method: :post do |f|
     = f.input :subject, input_html: {placeholder: "#{t('.subject_placeholder')}"}
-    = f.association :users, as: :select, collection: current_user.friends.collect{|friend| [friend.name, friend.id]}, input_html: {class: 'chosen-select'}
+    = f.input :user_ids, required: true, as: :select, collection: current_user.friends.collect{|friend| [friend.name, friend.id]}, input_html: {multiple: true, class: 'chosen-select'}
     = f.submit t('submit.create'), class: 'btn btn-success'
 
 :javascript
