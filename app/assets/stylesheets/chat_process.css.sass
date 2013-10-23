@@ -1,16 +1,26 @@
+$h_form_message: 150px
+
 #chat-container
   height: 100%
-  //position: relative
-  #chat-history
+  #left_block
+    height: 100%
+    #form_message
+      height: $h_form_message !important
+      position: fixed
+      bottom: 4px
+      form#new_message
+        .input.text.required.message_text
+          textarea
+            width: 97.991392%
+            height: 100px
+            resize: none
+    #chat-history
+      position: absolute
+      bottom: $h_form_message + 4px + 3px
+      overflow-y: auto
+      .chat-history-message:hover
+        background-color: #faf2f2
 
-    height: 70%
-  form#new_message
-    position: absolute
-    bottom: 1px
-    //height: 30%
-    width: 70%
-    margin: 0
-    textarea
-      width: 100%
-      padding: 0
+
+
 

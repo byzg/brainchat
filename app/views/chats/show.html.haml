@@ -1,7 +1,8 @@
 #chat-container
-  #chat-history
-    =render partial: 'messages/message', collection: resource.messages.last(10)
-  = simple_form_for @message, url: chat_messages_path(resource), method: :post, remote: true do |f|
-    = f.input :text, :input_html => { :cols => 15, :rows => 4 }
-    = f.submit class: 'btn btn-success'
-
+  .span9#left_block
+    #chat-history
+      =render partial: 'messages/message', collection: resource.messages
+    #form_message
+      = simple_form_for @message, url: chat_messages_path(resource), method: :post, remote: true do |f|
+        = f.input :text, label: false, input_html: {rows: false}
+        = f.submit t('submit.send'), class: 'btn btn-success'
