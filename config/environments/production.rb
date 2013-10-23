@@ -65,5 +65,26 @@ Mailchat::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  #config.action_mailer.default_url_options = { :host => 'yourapp.heroku.com' }
+  #config.action_mailer.raise_delivery_errors = false
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  #config.action_mailer.default_url_options = { :host => 'secure-reaches-2166.herokuapp.com' }
+
+
+  #config.action_mailer.default_url_options = { :host => 'myapp.herokuapp.com' }
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.perform_deliveries = true
+  #config.action_mailer.raise_delivery_errors = false
+  #config.action_mailer.default :charset => "utf-8"
+  #config.action_mailer.smtp_settings = {
+  #    address: "smtp.gmail.com",
+  #    port: 587,
+  #    domain: "myapp.herokuapp.com",
+  #    authentication: "plain",
+  #    enable_starttls_auto: true,
+  #    user_name: ENV["GMAIL_USERNAME"],
+  #    password: ENV["GMAIL_PASSWORD"]
+  #}
+
+  #$ heroku config:add GMAIL_USERNAME=no-reply@example.com GMAIL_PASSWORD=please
 end
