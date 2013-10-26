@@ -71,5 +71,9 @@ module Mailchat
       g.helper = false
     end
 
+    config.to_prepare do
+      Devise::SessionsController.skip_before_filter :set_account_password, :only => [:destroy]
+    end
+
   end
 end

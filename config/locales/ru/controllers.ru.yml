@@ -1,0 +1,7 @@
+ru:
+  controllers:
+    account_passwords:
+      notice: 'Пароль успешно подтвержден'
+      alert: 'Пароль не подошел'
+    messages:
+      unknown_error: "Произошла непредвиденная ошибка. Сообщите об этом <a href='http://vk.com/byzgaj'>сюда</a>"

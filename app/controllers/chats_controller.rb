@@ -1,6 +1,6 @@
 class ChatsController < InheritedResources::Base
   actions :index, :new, :create
-  #respond_to :js, :only => :create
+
   def create
     params[:chat][:user_ids].concat(["#{current_user.id}"])
     create! do |success, failure|

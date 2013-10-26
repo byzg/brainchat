@@ -1,4 +1,4 @@
-jQuery('#chat-history').append("#{j render partial: 'messages/message', object: resource}");
+$('#chat-history').append("#{j render partial: 'messages/message', object: resource}");
 $('#chat-history').scrollTop($('#chat-history').scrollTop()+parseInt($('.chat-history-message').last().css('height')));
 $('#form_message textarea').val('');
 $('#form_message textarea').focus();

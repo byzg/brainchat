@@ -7,6 +7,8 @@
     = csrf_meta_tags
   %body
     - if current_user
+      - if session[:current_user_account_password]
+        #current_user_account_password{style: "display: none"}
       .navbar.navbar-static-top
         .navbar-inner
           .container
@@ -40,3 +42,4 @@
         .messages= bootstrap_flash
       .row-fluid
         .span12= yield
+

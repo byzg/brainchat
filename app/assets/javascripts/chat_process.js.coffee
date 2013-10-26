@@ -1,4 +1,23 @@
 $ ->
+#  if ($('#current_user_account_password').length)
+#    check_email_timer_id = setInterval () ->
+#      $.ajax(
+#        url: "/messages/check_email"
+#        dataType: 'json'
+#        cache: false
+#        method: 'GET'
+#      ).done (data) ->
+#        if data['message']
+#          $('#chat-history').append("<div class='chat-history-message'>" + data['message'] + "</div>");
+#          $('#chat-history').scrollTop($('#chat-history').scrollTop()+parseInt($('.chat-history-message').last().css('height')));
+#          $('#form_message textarea').val('');
+#          $('#form_message textarea').focus();
+#        else
+##          alert(data['error']);
+#          $('.row-fluid .messages').append(data['html'])
+#          clearInterval(check_email_timer_id);
+#    ,10000
+
   if ($('#chat-container').length)
     h_body = parseInt($('body').css('height'));
     h_navbar = parseInt($('.navbar.navbar-static-top').css('height'));
@@ -15,5 +34,28 @@ $ ->
     h_left_block = parseInt($('#chat-container #left_block').css('height'));
     h_form_message = parseInt($('#chat-container #left_block #form_message').css('height'));
     $('#chat-container #left_block #chat-history').css('max-height', h_left_block - h_form_message - 10);
-    t_last_message = parseInt($('.chat-history-message').last().offset().top + $('.chat-history-message').last().css('height'))
-    $('#chat-history').scrollTop(t_last_message);
+    last_message = $('.chat-history-message').last()
+    if (last_message.length)
+      t_last_message = parseInt(last_message.offset().top + last_message.css('height'))
+      $('#chat-history').scrollTop(t_last_message);
+
+    check_email_timer_id = setInterval () ->
+      $.ajax(
+        url: "/messages/check_email"
+        dataType: 'json'
+        cache: false
+        method: 'GET'
+      ).done (data) ->
+        if (data['messages'])
+          if !(data['messages'] == 'none')
+#            alert(data[''])
+            $('#chat-history').append(data['messages']);
+            $('#chat-history').scrollTop($('#chat-history').scrollTop()+parseInt($('.chat-history-message').last().css('height')));
+            $('#form_message textarea').val('');
+            $('#form_message textarea').focus();
+        else
+          alert(data['error']);
+          clearInterval(check_email_timer_id);
+    ,5000
+
+
