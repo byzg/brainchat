@@ -48,7 +48,6 @@ $ ->
       ).done (data) ->
         if (data['messages'])
           if !(data['messages'] == 'none')
-#            alert(data[''])
             $('#chat-history').append(data['messages']);
             $('#chat-history').scrollTop($('#chat-history').scrollTop()+parseInt($('.chat-history-message').last().css('height')));
             $('#form_message textarea').val('');
