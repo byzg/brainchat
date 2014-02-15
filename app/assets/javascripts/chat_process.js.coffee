@@ -34,27 +34,33 @@ $ ->
     h_left_block = parseInt($('#chat-container #left_block').css('height'));
     h_form_message = parseInt($('#chat-container #left_block #form_message').css('height'));
     $('#chat-container #left_block #chat-history').css('max-height', h_left_block - h_form_message - 10);
+
     last_message = $('.chat-history-message').last()
     if (last_message.length)
       t_last_message = parseInt(last_message.offset().top + last_message.css('height'))
       $('#chat-history').scrollTop(t_last_message);
 
-    check_email_timer_id = setInterval () ->
-      $.ajax(
-        url: "/messages/check_email"
-        dataType: 'json'
-        cache: false
-        method: 'GET'
-      ).done (data) ->
-        if (data['messages'])
-          if !(data['messages'] == 'none')
-            $('#chat-history').append(data['messages']);
-            $('#chat-history').scrollTop($('#chat-history').scrollTop()+parseInt($('.chat-history-message').last().css('height')));
-            $('#form_message textarea').val('');
-            $('#form_message textarea').focus();
-        else
-          alert(data['error']);
-          clearInterval(check_email_timer_id);
-    ,5000
+    faye = new Faye.Client("http://localhost:9292/faye")
+    faye.subscribe "/messages/create", (data) ->
+      eval data
+
+
+#    check_email_timer_id = setInterval () ->
+#      $.ajax(
+#        url: "/messages/check_email"
+#        dataType: 'json'
+#        cache: false
+#        method: 'GET'
+#      ).done (data) ->
+#        if (data['messages'])
+#          if !(data['messages'] == 'none')
+#            $('#chat-history').append(data['messages']);
+#            $('#chat-history').scrollTop($('#chat-history').scrollTop()+parseInt($('.chat-history-message').last().css('height')));
+#            $('#form_message textarea').val('');
+#            $('#form_message textarea').focus();
+#        else
+#          alert(data['error']);
+#          clearInterval(check_email_timer_id);
+#    ,5000
 
 

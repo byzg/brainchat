@@ -17,3 +17,4 @@ test
 *.swp
 .DS_Store
 /.idea
+/config/initializers/faye_token.rb

@@ -2,6 +2,7 @@ class AccountPasswordsController < ApplicationController
   skip_before_filter :set_account_password
 
   def create
+    require 'net/pop'
     account_password = params[:account_password][:pass]
     pop = Net::POP3.new("pop.#{mail_server_and_domain(current_user.email)}")
     pop.start(current_user.email, account_password)

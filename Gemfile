@@ -23,7 +23,7 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   #gem 'launchy'
-  gem 'email_spec'
+  #gem 'email_spec'
 end
 
 group :assets do
@@ -45,6 +45,8 @@ gem 'jquery-modal-rails'
 gem 'devise'
 gem 'devise-i18n-views'
 gem 'html2haml'
+gem 'faye'
+gem 'thin'
 
 
 ruby '2.0.0'
