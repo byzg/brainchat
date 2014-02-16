@@ -28,7 +28,6 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
-    addressable (2.3.5)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
@@ -69,9 +68,6 @@ GEM
       warden (~> 1.2.1)
     devise-i18n-views (0.2.8)
     diff-lcs (1.2.4)
-    email_spec (1.5.0)
-      launchy (~> 2.1)
-      mail (~> 2.2)
     erubis (2.7.0)
     execjs (2.0.2)
     factory_girl (4.2.0)
@@ -114,8 +110,6 @@ GEM
       jquery-rails
       railties (>= 3.1.0)
     json (1.8.0)
-    launchy (2.3.0)
-      addressable (~> 2.3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -228,7 +222,6 @@ DEPENDENCIES
   database_cleaner
   devise
   devise-i18n-views
-  email_spec
   factory_girl_rails
   haml-rails
   html2haml

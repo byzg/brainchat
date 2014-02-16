@@ -1,23 +1,4 @@
 $ ->
-#  if ($('#current_user_account_password').length)
-#    check_email_timer_id = setInterval () ->
-#      $.ajax(
-#        url: "/messages/check_email"
-#        dataType: 'json'
-#        cache: false
-#        method: 'GET'
-#      ).done (data) ->
-#        if data['message']
-#          $('#chat-history').append("<div class='chat-history-message'>" + data['message'] + "</div>");
-#          $('#chat-history').scrollTop($('#chat-history').scrollTop()+parseInt($('.chat-history-message').last().css('height')));
-#          $('#form_message textarea').val('');
-#          $('#form_message textarea').focus();
-#        else
-##          alert(data['error']);
-#          $('.row-fluid .messages').append(data['html'])
-#          clearInterval(check_email_timer_id);
-#    ,10000
-
   if ($('#chat-container').length)
     h_body = parseInt($('body').css('height'));
     h_navbar = parseInt($('.navbar.navbar-static-top').css('height'));
@@ -55,6 +36,6 @@ $ ->
         else
           alert(data['error']);
           clearInterval(check_email_timer_id);
-    ,5000
+    ,30000
 
 

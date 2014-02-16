@@ -1,7 +1,6 @@
 class UserFriendAssignment < ActiveRecord::Base
   attr_accessible :user_id, :friend_id
   belongs_to :friend, :class_name => "User"
-
   validate :cannot_add_self
   validates :user_id, :uniqueness => {:scope => :friend_id}
 

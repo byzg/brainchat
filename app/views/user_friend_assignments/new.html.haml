@@ -1,2 +1,3 @@
-= simple_form_for @friend do |f|
-  =f.input :friend_name
+-#= simple_form_for @friend do |f|
+-#  = f.input :friend_name, required: true, as: :select, collection: User.all.collect{|friend| [friend.name, friend.id]}, input_html: {multiple: true, class: 'chosen-select'}
+-#  = f.submit t('submit.create'), class: 'btn btn-success'

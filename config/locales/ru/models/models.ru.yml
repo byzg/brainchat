@@ -12,6 +12,7 @@ ru:
         users: 'Собеседники'
         subject: 'Тема'
         user_ids: 'Собеседники'
+        created_at: 'Дата создания'
     errors:
       models:
         user:

@@ -1,0 +1,17 @@
+#chat_list
+  .row-fluid
+    .span4
+      %h5.text-center= t('.chat')
+    .span8
+      %h5.text-center= "#{t('.details.title')}: #{collection.first.subject}"
+  .row-fluid
+    .span5
+      %table
+        %thead
+          %th.span1 ID
+          %th.span9= Chat.human_attribute_name('subject')
+          %th.span2
+        = render partial: 'chat', collection: collection
+    .span7
+      = details_table(details_hash_default, {class: 'details_table'})
+      %h6= "#{t('.details.members')} #{collection.first.users.pluck(:name).join(', ')}"

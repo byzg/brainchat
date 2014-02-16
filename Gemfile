@@ -22,8 +22,6 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-  #gem 'launchy'
-  gem 'email_spec'
 end
 
 group :assets do
@@ -38,7 +36,6 @@ end
 gem 'jquery-rails'
 gem 'inherited_resources'
 gem 'simple_form'
-#gem "i18n-missing_translations"
 gem 'sass'
 gem 'sass-rails',   '~> 3.2.3'
 gem 'jquery-modal-rails'

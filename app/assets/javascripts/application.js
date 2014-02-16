@@ -15,5 +15,4 @@
 //= require twitter/bootstrap
 //= require chosen-jquery
 //= require_tree .
-//= require jquery.ui.all
 //= require jquery.modal

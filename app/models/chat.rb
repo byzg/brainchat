@@ -3,9 +3,10 @@ class Chat < ActiveRecord::Base
   has_many :messages
   has_many :chat_user_assignments
   has_many :users, through: :chat_user_assignments
+  belongs_to :owner, class_name: 'User'
   validate :must_have_more_then_two_users
   after_create {
-    update_attribute(:subject, I18n.t('models_custom.chat.before_create.subject_if_not_given', chat_id: id))
+    update_attribute(:subject, I18n.t('models_custom.chat.before_create.subject_if_not_given', chat_id: id)) unless subject
   }
 
   def user_ids=(user_ids)

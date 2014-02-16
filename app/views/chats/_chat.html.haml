@@ -1,2 +1,4 @@
-= link_to chat.id, chat_path(chat.id)
-%br
+%tr.cursor-pointer{"data-link" => details_chat_path(chat.id)}
+  %td= chat.id
+  %td= chat.subject
+  %td= link_to t('go'), chat_path(chat.id)

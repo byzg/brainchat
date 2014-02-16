@@ -3,3 +3,14 @@ ru:
     new:
       title: 'Создание беседы'
       subject_placeholder: 'Введите тему'
+    index:
+      title: 'Беседы с Вашим участием'
+      no_chats: 'Бесед пока нет. <a href="/chats/new">Создать</a>'
+    tables:
+      chat: 'Беседа'
+      details:
+        title: 'Подробные сведения'
+        owner: 'Создатель'
+        messages_count: 'Всего сообщений'
+        last_message: 'Последнее сообщение'
+        members: 'Участники:'

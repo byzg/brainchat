@@ -1,0 +1,10 @@
+.row-fluid
+  .span12
+    %h3.text-center= t('.title')
+-unless collection.blank?
+  = render partial: 'tables'
+-else
+  .text-center
+    != t('.no_chats')
+
+

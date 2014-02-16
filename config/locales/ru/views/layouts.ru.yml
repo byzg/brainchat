@@ -10,5 +10,7 @@ ru:
           title: 'Беседы'
           new: 'Создать новую'
         friedns: 'Собеседники'
+        search:
+          placeholder: 'Поиск'
 
 
