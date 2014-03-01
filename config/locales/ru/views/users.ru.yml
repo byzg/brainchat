@@ -1,0 +1,5 @@
+ru:
+  users:
+    user:
+      prompt_select_box_chat: 'Выберите беседу'
+      to_chat: 'к выбранной беседе'

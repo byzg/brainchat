@@ -7,7 +7,7 @@ Mailchat::Application.routes.draw do
   resources :messages, only: [] do
     get :check_email, on: :collection
   end
-  resources :user_friend_assignments, only: [:index, :new]
+  resources :user_friend_assignments, only: [:index, :new, :create]
   resources :account_passwords, only: [:new, :create]
 
   root :to => 'chats#index'

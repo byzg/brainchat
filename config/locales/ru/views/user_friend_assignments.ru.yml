@@ -1,4 +1,7 @@
 ru:
   user_friend_assignments:
     index:
-      add_friend_link: 'Добавить собеседника'
+      title: 'Ваши собеседники'
+      add_friend: 'Добавить собеседника'
+    new:
+      select_friend: 'Выберите собеседника'

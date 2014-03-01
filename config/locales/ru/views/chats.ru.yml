@@ -3,6 +3,7 @@ ru:
     new:
       title: 'Создание беседы'
       subject_placeholder: 'Введите тему'
+      select_friends: 'Выберите собеседников'
     index:
       title: 'Беседы с Вашим участием'
       no_chats: 'Бесед пока нет. <a href="/chats/new">Создать</a>'

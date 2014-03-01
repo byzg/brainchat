@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(:version => 20140220214440) do
     t.integer  "user_id"
     t.integer  "friend_id"
     t.datetime "created_at"
-    t.string   "friend_name"
   end
 
   add_index "user_friend_assignments", ["user_id", "friend_id"], :name => "index_user_friend_assignments_on_user_id_and_friend_id", :unique => true

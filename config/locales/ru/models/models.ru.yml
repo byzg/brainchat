@@ -2,6 +2,9 @@ ru:
   activerecord:
     models:
      user: 'Пользователь'
+     chat:
+      one: 'Беседа'
+      other: 'Беседы'
     attributes:
       user:
         name: 'Имя'
@@ -13,6 +16,7 @@ ru:
         subject: 'Тема'
         user_ids: 'Собеседники'
         created_at: 'Дата создания'
+        owner_id: 'Создатель'
     errors:
       models:
         user:
@@ -20,11 +24,9 @@ ru:
             email:
               invalid: ' недопустимый (должен быть вида: mymail@mymail.mymail)'
               not_found: ' не найден'
-              blank: ' не может быть пустым'
               taken: ' уже существует в базе данных'
             password:
               too_short: ' должен содержать от %{count} символов'
-              blank: ' не может быть пустым'
               confirmation: ' не совпадает с подтвержением'
               invalid: ' должен состоять из латинских букв и содежать хотя бы одну цифру. Совет: проверте раскладку'
         user_friend_assignment:
@@ -33,3 +35,4 @@ ru:
               taken: "Невозможно добавить дважды одного и того же собеседника"
       messages:
         record_invalid: 'Запись недействительна'
+        blank: '- поле не может быть пустым'

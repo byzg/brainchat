@@ -15,3 +15,4 @@
     .span7
       = details_table(details_hash_default, {class: 'details_table'})
       %h6= "#{t('.details.members')} #{collection.first.users.pluck(:name).join(', ')}"
+      %a.update_current_chat.btn.btn-success= t('update')

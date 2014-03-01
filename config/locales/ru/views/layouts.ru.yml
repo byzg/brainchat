@@ -9,6 +9,7 @@ ru:
         chats:
           title: 'Беседы'
           new: 'Создать новую'
+          list: 'Список'
         friedns: 'Собеседники'
         search:
           placeholder: 'Поиск'

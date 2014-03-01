@@ -3,8 +3,6 @@ ru:
     chat:
       validation:
         must_have_more_then_two_users: 'В беседе должно быть не менее 2-х собеседников (включая её создателя)'
-      before_create:
-        subject_if_not_given: 'Тема#%{chat_id}'
     user_friend_assignments:
       validation:
         cannot_add_self: "Невозможно добавить себя"

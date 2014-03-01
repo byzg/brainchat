@@ -1,2 +1,12 @@
-= user.email
-%br
+%tr
+  %td= friend_chats_group[0].id
+  %td= friend_chats_group[0].name
+  %td= friend_chats_group[0].email
+  %td
+    - unless friend_chats_group[1].nil?
+      = select_tag 'chats',
+       options_from_collection_for_select(friend_chats_group[1], "id", "subject"),
+       class: 'chosen-select', prompt: t('.prompt_select_box_chat')
+      %span.label_of_selectbox.well.well-small.well-very-small
+        = link_to t('go'), chat_path(friend_chats_group[1].first.id)
+        = t('.to_chat')

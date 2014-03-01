@@ -2,10 +2,8 @@
   %h3= t('.title')
   = simple_form_for resource, url: chats_path(resource), method: :post do |f|
     = f.input :subject, input_html: {placeholder: "#{t('.subject_placeholder')}"}
-    = f.input :user_ids, required: true, as: :select, collection: current_user.friends.collect{|friend| [friend.name, friend.id]}, input_html: {multiple: true, class: 'chosen-select'}
+    = f.input :user_ids, required: true, as: :select,
+     collection: current_user.friends.collect{|friend| [friend.name, friend.id]},
+     input_html: {multiple: true, class: 'chosen-select', 'data-placeholder' => t('.select_friends')}
+    = f.input :owner_id, as: :hidden, input_html: { value: current_user.id }
     = f.submit t('submit.create'), class: 'btn btn-success'
-
-:javascript
-  setTimeout("$('.chosen-select').chosen();", 10);
-  $('.chosen-select').attr('data-placeholder', "#{t('chosen_rails.friends_data_placeholder')}");
-  $(".chosen-select").chosen({no_results_text: "#{t('chosen_rails.no_results_text')}"});

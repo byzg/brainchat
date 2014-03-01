@@ -10,12 +10,11 @@ class User < ActiveRecord::Base
                   :name
 
   validates :password, :format => { :with => /^[a-zA-Z0-9.-]+$/  }
+  validates :name, presence: true
   has_many :chat_user_assignments
   has_many :chats, through: :chat_user_assignments
   has_many :user_friend_assignments
   has_many :friends, :through => :user_friend_assignments
-
-  def friend_name(friend)
-    user_friend_assignments.find_by_friend_id(friend.id).friend_name
-  end
+  scope :all_except, lambda{|user| user ? {conditions: ["id != ?", user.id]} : {} }
+  scope :not_friends_for, lambda{|user| user ? User.all - user.friends - [user] : {} }
 end
