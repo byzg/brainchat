@@ -17,4 +17,11 @@ class User < ActiveRecord::Base
   has_many :friends, :through => :user_friend_assignments
   scope :all_except, lambda{|user| user ? {conditions: ["id != ?", user.id]} : {} }
   scope :not_friends_for, lambda{|user| user ? User.all - user.friends - [user] : {} }
+  def have_friends?
+    friends.presence != nil
+  end
+  def have_chat?(chat)
+    id = chat.instance_of?(Chat) ? chat.id : chat
+    chats.find_by_id(id) != nil
+  end
 end

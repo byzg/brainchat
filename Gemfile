@@ -4,7 +4,6 @@ gem 'rails', '3.2.13'
 gem 'pg'
 group :production do
   gem 'rails_12factor'
-  gem 'haml-rails'
 end
 
 group :development, :test do
@@ -28,11 +27,11 @@ group :assets do
   gem 'chosen-rails'
   gem 'jquery-ui-rails'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'haml-rails'
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
 end
 
+gem 'haml-rails'
 gem 'jquery-rails'
 gem 'inherited_resources'
 gem 'simple_form'

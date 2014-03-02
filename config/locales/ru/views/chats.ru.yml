@@ -6,7 +6,9 @@ ru:
       select_friends: 'Выберите собеседников'
     index:
       title: 'Беседы с Вашим участием'
-      no_chats: 'Бесед пока нет. <a href="/chats/new">Создать</a>'
+      no_chats: 'Бесед пока нет.'
+      create_chat_without_friends: 'Чтобы создать беседу %{add} собеседников'
+      add_friend: 'добавьте'
     tables:
       chat: 'Беседа'
       details:

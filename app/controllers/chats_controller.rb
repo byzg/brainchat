@@ -11,6 +11,7 @@ class ChatsController < InheritedResources::Base
   end
 
   def show
+    return redirect_to root_path, alert: I18n.t('controllers.chats.show.not_found_or_no access') unless current_user.have_chat?(params[:id])
     @message = Message.new
   end
 

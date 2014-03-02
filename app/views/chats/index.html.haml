@@ -5,6 +5,10 @@
   = render partial: 'tables'
 -else
   .text-center
-    != t('.no_chats')
+    = t('.no_chats')
+    - if current_user.have_friends?
+      = link_to_modal t('submit.create'), new_chat_path
+    -else
+      != t('.create_chat_without_friends', add: link_to_modal( t('.add_friend'), new_user_friend_assignment_path))
 
 

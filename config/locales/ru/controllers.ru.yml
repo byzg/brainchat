@@ -5,3 +5,6 @@ ru:
       alert: 'Пароль не подошел'
     messages:
       unknown_error: "Произошла непредвиденная ошибка. Сообщите об этом <a href='http://vk.com/byzgaj'>сюда</a>"
+    chats:
+      show:
+        not_found_or_no access: 'Такой беседы не существует или Вы не являетесь её участником'
