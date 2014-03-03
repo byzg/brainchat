@@ -9,8 +9,7 @@ class MessagesController < InheritedResources::Base
 
   def check_email
     account_password = session[:current_user_account_password]
-    pop = Net::POP3.new("pop.#{mail_server_and_domain(current_user.email)}")
-    pop.start(current_user.email, account_password)
+    pop = get_pop(account_password)
     count_new_letters = pop.mails.count - session[:last_checking_time]
     Rails.logger.info "NEW_MESSAGES = #{count_new_letters}"
     if count_new_letters > 0

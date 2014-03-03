@@ -3,8 +3,7 @@ class AccountPasswordsController < ApplicationController
 
   def create
     account_password = params[:account_password][:pass]
-    pop = Net::POP3.new("pop.#{mail_server_and_domain(current_user.email)}")
-    pop.start(current_user.email, account_password)
+    pop = get_pop(account_password)
     session[:current_user_account_password] = account_password
     session[:last_checking_time] = pop.mails.count
     return redirect_to root_path, notice: I18n.t('controllers.account_passwords.notice')

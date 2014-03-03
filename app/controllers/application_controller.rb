@@ -7,13 +7,19 @@ class ApplicationController < ActionController::Base
   def set_account_password
     redirect_to new_account_password_path
   end
-
+  private
   def account_password_not_given?
     user_signed_in? && !(session[:current_user_account_password])
   end
 
   def mail_server_and_domain(email)
     email[((email =~ /@/)+1)..-1]
+  end
+
+  def get_pop(account_password)
+    pop = Net::POP3.new("pop.#{mail_server_and_domain(current_user.email)}")
+    pop.start(current_user.email, account_password)
+    pop
   end
 
 end
