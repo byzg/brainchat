@@ -1,6 +1,7 @@
 class MessagesController < InheritedResources::Base
 
   respond_to :js, :only => :create
+  require 'mail'
 
   def create
     @message = Chat.find(params[:chat_id]).messages.new(params[:message])
