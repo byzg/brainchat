@@ -1,2 +1,5 @@
 .chat-history-message
-  = to_html(message.text)
+  %ul
+    %li= message.user.email
+    %li= message.incomer_subject
+    %li= message.text

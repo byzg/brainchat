@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :chats, through: :chat_user_assignments
   has_many :user_friend_assignments
   has_many :friends, :through => :user_friend_assignments
+  has_many :messages
   scope :all_except, lambda{|user| user ? {conditions: ["id != ?", user.id]} : {} }
   scope :not_friends_for, lambda{|user| user ? User.all - user.friends - [user] : {} }
   def have_friends?

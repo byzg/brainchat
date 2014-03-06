@@ -19,10 +19,11 @@ $ ->
     if (last_message.length)
       t_last_message = parseInt(last_message.offset().top + last_message.css('height'))
       $('#chat-history').scrollTop(t_last_message);
+    request_chat_id = $('input#request_chat_id[type=hidden]').val()
 
     check_email_timer_id = setInterval () ->
       $.ajax(
-        url: "/messages/check_email"
+        url: "/messages/check_email?request_chat_id=#{request_chat_id}"
         dataType: 'json'
         cache: false
         method: 'GET'
@@ -36,6 +37,6 @@ $ ->
         else
           alert(data['error']);
           clearInterval(check_email_timer_id);
-    ,30000
+    ,10000
 
 

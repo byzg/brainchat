@@ -9,25 +9,32 @@ class MessagesController < InheritedResources::Base
   end
 
   def check_email
-    account_password = session[:current_user_account_password]
-    pop = get_pop(account_password)
-    count_new_letters = pop.mails.count - session[:last_checking_time]
+    pop = get_pop(session[:current_user_account_password])
+    pop_mails = pop.mails
+    count_new_letters = pop_mails.count - session[:last_checking_time]
     Rails.logger.info "NEW_MESSAGES = #{count_new_letters}"
     if count_new_letters > 0
-      session[:last_checking_time] = pop.mails.count
-      letters_raw = pop.mails.last(count_new_letters)
+      session[:last_checking_time] = pop_mails.count
+      letters_raw = pop_mails.last(count_new_letters)
       @letters = []
+      request_chat = Chat.find(params[:request_chat_id])
       letters_raw.each do |letter|
         @letters << MessageMailer.receive(letter.pop)
+        @letters = @letters.select {|l| request_chat.users.pluck(:email).include?(l[:from])}
+        @letters.each do |l|
+          Message.create(text: l[:text],
+                         incomer_subject: l[:subject],
+                         user_id: current_user.id,
+                         chat_id: request_chat.id )
+        end
       end
-      render json: {messages: (render_to_string :partial => 'messages/income_message')}
+      answer = @letters.empty? ? 'none' : render_to_string(partial: 'messages/income_message')
     else
-      render json: {messages: 'none'}
+      answer = 'none'
     end
-    #render json: {error: "у вас #{count_new_letters} новых писем"}
-    #render json: {message: pop.mails.count, notify: (render_to_string :partial => 'messages/notify')}
+    render json: {messages: answer}
   rescue
-    render :json => {error: I18n.t('controllers.messages.unknown_error')}
+    render json: {error: I18n.t('controllers.messages.unknown_error')}
   end
 
 end

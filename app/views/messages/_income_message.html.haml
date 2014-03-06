@@ -1,3 +1,7 @@
+-#encoding: utf-8
 - @letters.each do |letter|
   .chat-history-message
-    = to_html(letter[:body])
+    %ul
+      %li= letter[:from]
+      %li= letter[:subject]
+      %li= letter[:text]
