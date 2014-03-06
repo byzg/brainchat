@@ -21,11 +21,16 @@ class MessagesController < InheritedResources::Base
       letters_raw.each do |letter|
         @letters << MessageMailer.receive(letter.pop)
         @letters = @letters.select {|l| request_chat.users.pluck(:email).include?(l[:from])}
-        @letters.each do |l|
-          Message.create(text: l[:text],
-                         incomer_subject: l[:subject],
-                         user_id: current_user.id,
-                         chat_id: request_chat.id )
+        begin
+          @letters.each do |l|
+            @m = Message.create(text: l[:text],
+                           incomer_subject: l[:subject],
+                           user_id: current_user.id,
+                           chat_id: request_chat.id )
+          end
+        rescue
+          Rails.logger.info "-----------------     message errors     -------------------"
+          Rails.logger.info @m.errors.full_messages
         end
       end
       answer = @letters.empty? ? 'none' : render_to_string(partial: 'messages/income_message')
