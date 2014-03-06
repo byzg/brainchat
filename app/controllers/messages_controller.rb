@@ -20,26 +20,31 @@ class MessagesController < InheritedResources::Base
       request_chat = Chat.find(params[:request_chat_id])
       letters_raw.each do |letter|
         @letters << MessageMailer.receive(letter.pop)
+        Rails.logger.info '------------   received !!!!!     ----------------------'
         @letters = @letters.select {|l| request_chat.users.pluck(:email).include?(l[:from])}
-        begin
+        Rails.logger.info '------------   selected     ----------------------'
+        #begin
           @letters.each do |l|
+            Rails.logger.info '------------   before creating     ----------------------'
             @m = Message.create(text: l[:text],
                            incomer_subject: l[:subject],
                            user_id: current_user.id,
                            chat_id: request_chat.id )
+            Rails.logger.info '------------   created     ----------------------'
+            Rails.logger.info @m.attributes
           end
-        rescue
-          Rails.logger.info "-----------------     message errors     -------------------"
-          Rails.logger.info @m.errors.full_messages
-        end
+        #rescue
+        #  Rails.logger.info "-----------------     message errors     -------------------"
+        #  Rails.logger.info @m.errors.full_messages
+        #end
       end
       answer = @letters.empty? ? 'none' : render_to_string(partial: 'messages/income_message')
     else
       answer = 'none'
     end
     render json: {messages: answer}
-  rescue
-    render json: {error: I18n.t('controllers.messages.unknown_error')}
+  #rescue
+  #  render json: {error: I18n.t('controllers.messages.unknown_error')}
   end
 
 end
