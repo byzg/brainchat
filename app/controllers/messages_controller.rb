@@ -21,8 +21,14 @@ class MessagesController < InheritedResources::Base
       letters_raw.each do |letter|
         @letters << MessageMailer.receive(letter.pop)
         Rails.logger.info '------------   received !!!!!     ----------------------'
-        @letters = @letters.select {|l| request_chat.users.pluck(:email).include?(l[:from])}
+        Rails.logger.info @letters
+        @letters = @letters.select do |l|
+          Rails.logger.info "Chat.find(#{params[:request_chat_id]}).users.pluck(:email).include?(#{l[:from]}) == #{request_chat.users.pluck(:email).include?(l[:from])}"
+          request_chat.users.pluck(:email).include?(l[:from])
+        end
         Rails.logger.info '------------   selected     ----------------------'
+        Rails.logger.info @letters
+        Rails.logger.info
         #begin
           @letters.each do |l|
             Rails.logger.info '------------   before creating     ----------------------'
