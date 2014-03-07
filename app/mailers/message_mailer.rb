@@ -9,6 +9,7 @@ class MessageMailer < ActionMailer::Base
     else
       decoded_text(email)
     end
+    Rails.logger.info '------------   received     ----------------------'
     letter
   end
 
