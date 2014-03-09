@@ -17,7 +17,7 @@ class ChatsController < InheritedResources::Base
 
   def details
     chat = Chat.find(params[:id])
-    messages = chat.messages
+    messages = Message.available_messages(chat, current_user)
     render json: {created_at: chat.created_at.to_s,
                   owner_name: chat.owner.name,
                   messages_count: messages.try(:count).to_i,

@@ -2,7 +2,7 @@
 #chat-container
   .span9#left_block
     #chat-history
-      =render partial: 'messages/message', collection: resource.messages
+      =render partial: 'messages/message', collection: Message.available_messages(resource, current_user)
     #form_message
       = simple_form_for @message, url: chat_messages_path(resource), method: :post, remote: true do |f|
         = f.input :text, label: false, input_html: {rows: false}

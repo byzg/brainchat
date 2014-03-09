@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_pop(account_password)
+    Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
     pop = Net::POP3.new("pop.#{mail_server_and_domain(current_user.email)}")
     pop.start(current_user.email, account_password)
     pop

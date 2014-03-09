@@ -2,4 +2,4 @@
   %ul
     %li= message.user.email
     %li= message.incomer_subject
-    %li= message.text
+    %li= message.text.gsub("\n", "<br>").html_safe

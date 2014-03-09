@@ -4,4 +4,4 @@
     %ul
       %li= letter[:from]
       %li= letter[:subject]
-      %li= letter[:text]
+      %li= letter[:text].gsub("\n", "<br>").html_safe
