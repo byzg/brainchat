@@ -6,4 +6,4 @@
     #form_message
       = simple_form_for @message, url: chat_messages_path(resource), method: :post, remote: true do |f|
         = f.input :text, label: false, input_html: {rows: false}
-        = f.submit t('submit.send'), class: 'btn btn-success'
+        = f.submit t('submit.send'), class: 'btn btn-success', "data-disable-with" => t('submit.sending')

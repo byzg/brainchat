@@ -2,11 +2,9 @@ class MessagesController < InheritedResources::Base
 
   respond_to :js, only: :create
   require 'mail'
-
-  def create
-    @message = Chat.find(params[:chat_id]).messages.new(params[:message])
-    super
-  end
+  before_filter lambda { params[:message].merge!({chat_id: params[:chat_id],
+                                                  user_id: current_user.id}) }, only: :create
+  after_filter :mass_sending, only: :create
 
   def check_email
     #Thread..new do end
@@ -76,5 +74,16 @@ class MessagesController < InheritedResources::Base
   #    sleep 10
   #  end
   #end
+
+  def mass_sending
+    if resource.valid?
+      set = (if current_user.is_owner?(resource.chat) then
+        resource.chat.users.select {|user| user.id != current_user.id}
+      else
+        [resource.chat.owner]
+      end).select { |user| current_user.can_send_messages_to?(user) }
+      MessageMailer.send_with_bch_id(resource, set, current_user).deliver unless set.empty?
+    end
+  end
 
 end

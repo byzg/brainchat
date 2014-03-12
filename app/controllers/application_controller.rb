@@ -23,4 +23,9 @@ class ApplicationController < ActionController::Base
     pop
   end
 
+  def logg(obj)
+    Rails.logger.info "#"*90
+    Rails.logger.info obj
+  end
+
 end

@@ -27,5 +27,8 @@ class User < ActiveRecord::Base
   def is_owner?(chat)
     id == chat.owner_id
   end
+  def can_send_messages_to?(user)
+    true      #                   ЗАГЛУШКА!!!
+  end
 
 end
