@@ -120,6 +120,19 @@
     форнтендовское оповещение отправителю, что это сообщение до такого-то юзера не дошло ибо
     он запретил куррент юзеру посылать сообщения ему.
 </div>
+<div>
+    24) Отказаться от мандрилла. Написать SMTP сервер, воспользовавшись:
+        - библиотекой NET/SMTP
+        - примерами из файла lib/tasks/net_smtp_exaple.rb, при этом для начала надо заставить
+    работать этот пример на локалхосте командой ruby lib/tasks/net_smtp_exaple.rb,
+    а после перенести в проект и использовать на удаленном ip адресе (узнать статический ip адрес
+    хероку сервера или хероку прокси сервера)
+    Ссылки:
+    http://stackoverflow.com/questions/10985402/send-email-via-ruby-code-on-heroku
+    https://www.google.ru/search?q=how+to+write+smtp+server&oq=how+to+write+smt&aqs=chrome.1.69i57j0l3.12071j0j1&sourceid=chrome&ie=UTF-8#newwindow=1&q=how+to+write+smtp+server+heroku
+    http://www.tutorialspoint.com/ruby/ruby_sending_email.htm
+    http://www.ruby-doc.org/stdlib-2.1.0/libdoc/net/smtp/rdoc/Net/SMTP.html
+</div>
 
 </body>
 </html>

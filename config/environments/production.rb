@@ -72,19 +72,23 @@ Mailchat::Application.configure do
 
 
   #config.action_mailer.default_url_options = { :host => 'myapp.herokuapp.com' }
-  #config.action_mailer.delivery_method = :smtp
   #config.action_mailer.perform_deliveries = true
   #config.action_mailer.raise_delivery_errors = false
   #config.action_mailer.default :charset => "utf-8"
-  #config.action_mailer.smtp_settings = {
-  #    address: "smtp.gmail.com",
-  #    port: 587,
-  #    domain: "myapp.herokuapp.com",
-  #    authentication: "plain",
-  #    enable_starttls_auto: true,
-  #    user_name: ENV["GMAIL_USERNAME"],
-  #    password: ENV["GMAIL_PASSWORD"]
-  #}
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address: 'smtp.mandrillapp.com',
+      port: 587,
+      domain: 'heroku.com',
+      authentication: "plain",
+      enable_starttls_auto: true,
+      user_name: ENV['MANDRILL_USERNAME'],
+      password: ENV["MANDRILL_APIKEY"]
+  }
+
+  #$ heroku addons:docs mandrill
   #$ heroku config:add GMAIL_USERNAME=no-reply@example.com GMAIL_PASSWORD=please
+  #$ heroku config:get MANDRILL_APIKEY
+  #$ heroku config:remove MANDRILL_APIKEY
 end

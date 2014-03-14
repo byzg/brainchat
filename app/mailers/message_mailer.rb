@@ -1,8 +1,8 @@
 class MessageMailer < ActionMailer::Base
-  #default from: "from@example.com"
+  #default from: "koshka@mail.com"
 
   def send_with_bch_id(message, set_users, current_user)
-    headers['bch_id'] = message.id
+    headers['X-BCH-ID'] = message.id
     mail(to: set_users.map(&:email),
          from: current_user.email,
          subject: message.chat.subject,
