@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  require 'encryptor'
   before_filter :authenticate_user!
   before_filter :set_account_password, if: :account_password_not_given?
   private
@@ -16,7 +17,8 @@ class ApplicationController < ActionController::Base
     email[((email =~ /@/)+1)..-1]
   end
 
-  def get_pop(account_password)
+  def get_pop(account_password_crypted)
+    account_password = Encryptor.decrypt(ENV['ACCOUNT_PASSWORD_KEY'], account_password_crypted, true, :account_password_salt, session)
     Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
     pop = Net::POP3.new("pop.#{mail_server_and_domain(current_user.email)}")
     pop.start(current_user.email, account_password)

@@ -9,6 +9,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'cucumber-rails', :require => false
+  gem 'dotenv-rails'
 end
 gem 'selenium-webdriver'
 
