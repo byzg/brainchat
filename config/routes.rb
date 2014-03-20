@@ -9,6 +9,9 @@ Mailchat::Application.routes.draw do
   end
   resources :user_friend_assignments, only: [:index, :new, :create]
   resources :account_passwords, only: [:new, :create]
+  resources :users, only: [:new] do
+    post :create_by_another_user, to: 'users#create', on: :collection
+  end
 
   root :to => 'chats#index'
 end

@@ -25,8 +25,15 @@
                   %ul.dropdown-menu
                     - if current_user.have_friends?
                       %li= link_to_modal t('.menu.chats.new'), new_chat_path
-                    %li= link_to t('.menu.chats.list'), chats_path
-                %li= link_to t('.menu.friedns'), user_friend_assignments_path
+                    %li= link_to t('list'), chats_path
+                %li.dropdown
+                  %a.dropdown-toggle{href: '#',:'data-toggle' => 'dropdown'}
+                    = t('.menu.friedns.title')
+                    %b.caret
+                  %ul.dropdown-menu
+                    %li= link_to t('list'), user_friend_assignments_path
+                    %li= link_to_modal t('submit.add'), new_user_friend_assignment_path
+                    %li= link_to_modal t('submit.create'), new_user_path
                 -#%li
                 -#  %form.navbar-form.pull-left
                 -#    %input.span2{type: "text", placeholder: t('.menu.search.placeholder')}/
@@ -37,7 +44,7 @@
                   = current_user.email
                   %b.caret
                 %ul.dropdown-menu
-                  %li= link_to t('.menu.account.edit'), "#"
+                  %li= link_to t('edit'), "#"
                   %li.divider
                   %li= link_to t('.menu.account.logout'), destroy_user_session_path, method: 'delete'
     .container-fluid

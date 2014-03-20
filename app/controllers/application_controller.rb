@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  require 'encryptor'
   before_filter :authenticate_user!
   before_filter :set_account_password, if: :account_password_not_given?
   private

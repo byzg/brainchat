@@ -1,3 +1,4 @@
-= simple_form_for resource do |f|
+= simple_form_for resource, url: create_by_another_user_users_path do |f|
+  = f.input :name
   = f.input :email
-  = f.submit
+  = f.submit t('submit.create'), class: 'btn btn-success'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140305223952) do
+ActiveRecord::Schema.define(:version => 20140320220126) do
 
   create_table "chat_user_assignments", :force => true do |t|
     t.integer "chat_id"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20140305223952) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.text     "registration_details"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -2,7 +2,7 @@ class AccountPasswordsController < ApplicationController
   skip_before_filter :set_account_password
 
   def create
-    account_password = Encryptor.crypt(ENV['ACCOUNT_PASSWORD_KEY'], params[:account_password][:pass], true, :account_password_salt)
+    account_password = Encryptor.crypt(ENV['ACCOUNT_PASSWORD_KEY'], params[:account_password][:pass], true, :account_password_salt, session)
     pop = get_pop(account_password)
     session[:current_user_account_password] = account_password
     session[:last_checking_time] = pop.mails.count

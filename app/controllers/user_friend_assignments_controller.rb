@@ -1,4 +1,5 @@
 class UserFriendAssignmentsController < InheritedResources::Base
+  actions :new, :create
   def index
     @friend_chats_group = Chat.common_chats_of_user_friends(current_user, 'id, subject').to_a
   end
