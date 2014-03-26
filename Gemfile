@@ -7,21 +7,24 @@ group :production do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'cucumber-rails', :require => false
   gem 'dotenv-rails'
-end
-gem 'selenium-webdriver'
-
-group :development do
-  gem 'zeus'
   gem 'quiet_assets'
 end
 
+group :development do
+  gem 'zeus'
+end
+
 group :test do
+  gem 'selenium-webdriver'
+  gem 'rspec-rails'
+  gem 'cucumber'
+  gem 'cucumber-rails', :require => false
+  gem 'mocha', require: false
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'poltergeist'
 end
 
 group :assets do

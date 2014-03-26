@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   def set_account_password
     redirect_to new_account_password_path
   end
-  private
   def account_password_not_given?
     user_signed_in? && !(session[:current_user_account_password])
   end

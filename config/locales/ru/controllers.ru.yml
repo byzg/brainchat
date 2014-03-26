@@ -9,3 +9,6 @@ ru:
     chats:
       show:
         not_found_or_no access: 'Такой беседы не существует или Вы не являетесь её участником'
+    users:
+      create:
+        notice: 'Собеседник успешно создан'

@@ -5,5 +5,5 @@
     = f.label :email
     %br/
     = f.email_field :email
-  %div= f.submit t('.send_me_reset_password_instructions', :default => "Send me reset password instructions")
+  %div= f.submit t('.send_me_reset_password_instructions', :default => "Send me reset password instructions"), class: 'btn btn-info'
 = render "devise/shared/links"

@@ -1,5 +1,5 @@
 Mailchat::Application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {registrations: "users/registrations"}
   resources :chats, only: [:index, :new, :create, :show] do
     resources :messages, only: [:create]
     get :details, on: :member

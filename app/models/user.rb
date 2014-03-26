@@ -3,17 +3,16 @@ class User < ActiveRecord::Base
   DETAILS_ACCESSIBLE = [:created_by_user_id]
   include HashFieldAccessor
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
+  # :token_authenticatable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :name, :registration_details
-
-  validates :password, :format => { :with => /^[a-zA-Z0-9.-]+$/  }
-  validates :name, :email, :password, presence: true
+                  :name
+  attr_protected :registration_details
+  validates :password, format: { with: /^[a-zA-Z0-9.-]+$/ }
+  validates :name, :email, :password, :password_confirmation, presence: true
   has_many :chat_user_assignments
   has_many :chats, through: :chat_user_assignments
   has_many :user_friend_assignments
@@ -21,7 +20,6 @@ class User < ActiveRecord::Base
   has_many :messages
   scope :all_except, lambda{|user| user ? {conditions: ["id != ?", user.id]} : {} }
   scope :not_friends_for, lambda{|user| user ? User.all - user.friends - [user] : {} }
-  after_create {creator.friends << self unless self_created?}
   def have_friends?
     friends.presence != nil
   end
@@ -37,9 +35,11 @@ class User < ActiveRecord::Base
   def creator
     User.find_by_id(created_by_user_id) || self
   end
-  private
   def self_created?
-    created_by_user_id == id
+    created_by_user_id == id || created_by_user_id.nil?
+  end
+  def creator_id=(id)
+    created_by_user_id = id
   end
 
 end

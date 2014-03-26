@@ -10,5 +10,5 @@
     = f.label :password_confirmation, t('.confirm_new_password', :default => 'Confirm new password')
     %br/
     = f.password_field :password_confirmation
-  %div= f.submit t('.change_my_password', :default => 'Change my password')
+  %div= f.submit t('.change_my_password', :default => 'Change my password'), class: 'btn btn-info'
 = render "devise/shared/links"

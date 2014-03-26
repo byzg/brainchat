@@ -9,6 +9,7 @@ ru:
         greeting: Привет %{recipient}!
         instruction:  'Вы можете активировать свою учетную запись, нажав ссылку снизу:'
         subject: Активация учетной записи
+        warning: 'Если Вы не регистрировались в системе, не нажимайте ссылку и удалите это сообщение'
       reset_password_instructions:
         action: Изменить пароль
         greeting: Привет %{recipient}!

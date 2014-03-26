@@ -86,6 +86,7 @@ Mailchat::Application.configure do
       user_name: ENV['MANDRILL_USERNAME'],
       password: ENV['MANDRILL_APIKEY']
   }
+  config.action_mailer.default_url_options = { :host => 'secure-reaches-2166.herokuapp.com' }
 
   #$ heroku addons:docs mandrill
   #$ heroku config:add GMAIL_USERNAME=no-reply@example.com GMAIL_PASSWORD=please

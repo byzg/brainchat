@@ -11,6 +11,8 @@ ru:
         email: 'E-mail'
         password: 'Пароль'
         password_confirmation: 'Подтверждение пароля'
+        remember_me: 'Запомнить меня'
+        confirmation_token: 'Ключ подтверждения'
       chat:
         users: 'Собеседники'
         subject: 'Тема'
@@ -24,11 +26,13 @@ ru:
             email:
               invalid: ' недопустимый (должен быть вида: mymail@mymail.mymail)'
               not_found: ' не найден'
-              taken: ' уже существует в базе данных'
+              taken: ' уже существует'
             password:
               too_short: ' должен содержать от %{count} символов'
               confirmation: ' не совпадает с подтвержением'
               invalid: ' должен состоять из латинских букв и содежать хотя бы одну цифру. Совет: проверте раскладку'
+            confirmation_token:
+              invalid: 'неверен'
         user_friend_assignment:
           attributes:
             user_id:
