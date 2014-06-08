@@ -28,4 +28,10 @@ class ApplicationController < ActionController::Base
     Rails.logger.info obj
   end
 
+  def exception_log(e)
+    Rails.logger.info "#############################   EXCEPTION   ###########################"
+    Rails.logger.info "#{e.class} : #{e.message}"
+    Rails.logger.info "#{e.backtrace.select{|t| t.include?("#{Rails.root}") }.join("\n\t")}"
+  end
+
 end

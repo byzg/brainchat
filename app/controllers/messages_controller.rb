@@ -7,11 +7,10 @@ class MessagesController < InheritedResources::Base
   def check_email
     #Thread..new do end
     render json: {messages: receive}
-  rescue => e
-    Rails.logger.info "#############################   EXCEPTION   ###########################"
-    Rails.logger.info "#{e.class} : #{e.message}"
-    Rails.logger.info "#{e.backtrace.select{|t| t.include?("#{Rails.root}") }.join("\n\t")}"
-    render json: {error: I18n.t('controllers.messages.unknown_error')}
+  rescue Net::POPAuthenticationError => e
+    handle_exception(e, 'authentication_error')
+  rescue Exception => e
+    handle_exception(e, 'unknown_error')
   end
 
   private
@@ -49,6 +48,7 @@ class MessagesController < InheritedResources::Base
     else
       answer = 'none'
     end
+    pop.finish
     answer
   end
 
@@ -94,6 +94,12 @@ class MessagesController < InheritedResources::Base
       end).select { |user| current_user.can_send_messages_to?(user) }
       MessageMailer.send_with_bch_id(resource, set, current_user).deliver unless set.empty?
     end
+  end
+
+  def handle_exception(e, locale_key)
+    exception_log(e)
+    locale_error = I18n.t("controllers.messages.#{locale_key}")
+    render json: {error: "#{locale_error} #{I18n.t('controllers.messages.autoreload')}"}
   end
 
 end

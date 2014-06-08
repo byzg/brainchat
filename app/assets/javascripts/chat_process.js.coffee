@@ -37,6 +37,7 @@ $ ->
         else
           alert(data['error']);
           clearInterval(check_email_timer_id);
+          location.reload()
     ,10000
 
 
