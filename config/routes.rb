@@ -1,4 +1,4 @@
-Mailchat::Application.routes.draw do
+Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "users/registrations"}
   resources :chats, only: [:index, :new, :create, :show] do
     resources :messages, only: [:create]

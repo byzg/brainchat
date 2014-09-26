@@ -1,9 +1,9 @@
 !!!
 %html
   %head
-    %title Mailchat
-    = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
+    %title BrainChat
+    = stylesheet_link_tag    'application', :media => 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
     = hidden_field_tag 'locale', I18n.locale

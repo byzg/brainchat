@@ -29,8 +29,9 @@ ru:
               taken: ' уже существует'
             password:
               too_short: ' должен содержать от %{count} символов'
-              confirmation: ' не совпадает с подтвержением'
               invalid: ' должен состоять из латинских букв и содежать хотя бы одну цифру. Совет: проверте раскладку'
+            password_confirmation:
+              confirmation: ' не совпадает с паролем'
             confirmation_token:
               invalid: 'неверен'
         user_friend_assignment:

@@ -3,7 +3,7 @@ class ChatsController < InheritedResources::Base
 
   def create
     params[:chat][:user_ids].concat(["#{current_user.id}"])
-    create! do |success, failure|
+    create! do |_, failure|
       failure.html {return redirect_to :back, alert: resource.errors.full_messages }
     end
     resource.owner = current_user

@@ -1,7 +1,25 @@
 source 'https://rubygems.org'
-
-gem 'rails', '3.2.13'
+ruby '2.1.2'
+gem 'rails', '4.1.6'
 gem 'pg'
+gem 'sass'
+gem 'sass-rails',   '~> 4.0.3'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+gem 'uglifier', '>= 1.0.3'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'haml-rails'
+gem 'jquery-rails'
+gem 'inherited_resources'
+gem 'simple_form'
+gem 'jquery-modal-rails'
+gem 'devise'
+gem 'devise-i18n-views'
+gem 'html2haml'
+gem 'chosen-rails'
+gem 'jquery-ui-rails'
+gem 'twitter-bootstrap-rails'
+gem 'turbolinks'
 group :production do
   gem 'rails_12factor'
 end
@@ -12,7 +30,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'zeus'
+  gem 'spring'
 end
 
 group :test do
@@ -25,26 +43,5 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'poltergeist'
+  gem 'spring-commands-cucumber'
 end
-
-group :assets do
-  gem 'chosen-rails'
-  gem 'jquery-ui-rails'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootstrap-rails'
-end
-
-gem 'haml-rails'
-gem 'jquery-rails'
-gem 'inherited_resources'
-gem 'simple_form'
-gem 'sass'
-gem 'sass-rails',   '~> 3.2.3'
-gem 'jquery-modal-rails'
-gem 'devise'
-gem 'devise-i18n-views'
-gem 'html2haml'
-
-
-ruby '2.0.0'

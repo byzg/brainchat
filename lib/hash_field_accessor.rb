@@ -31,7 +31,7 @@ module HashFieldAccessor
         return set_details_field(meth, args.first) if !attributes.has_key?(meth) && (method.to_s =~ /^\w+=$/)
         return details_field(method) unless attributes.has_key?(method.to_s)
       end
-      method_missing_without_hfa(method, args, block)
+      method_missing_without_hfa(method, *args, &block)
     end
 
     def details_merge!(hash)
