@@ -2,17 +2,14 @@ class User < ActiveRecord::Base
   DETAILS_FIELD = :registration_details
   DETAILS_ACCESSIBLE = [:created_by_user_id]
   include HashFieldAccessor
-  # Include default devise modules. Others available are:
+
   # :token_authenticatable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :name
-  attr_protected :registration_details
-  validates :password, format: { with: /^[a-zA-Z0-9.-]+$/ }
-  validates :name, :email, :password, :password_confirmation, presence: true
+  # attr_protected :registration_details
+  validates :password, format: { with: /\A[a-zA-Z0-9.-]+\z/ }
+  validates :name, presence: true
   has_many :chat_user_assignments
   has_many :chats, through: :chat_user_assignments
   has_many :user_friend_assignments

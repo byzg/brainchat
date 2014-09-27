@@ -1,9 +1,6 @@
 require 'rubygems'
 require 'mocha/api'
-if ENV['COVERAGE']
-  require 'simplecov'
-  SimpleCov.start 'rails'
-end
+require_relative './helpers'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../../config/environment', __FILE__)

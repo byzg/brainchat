@@ -3,7 +3,8 @@ PAGES={
     'Главная' => '/',
     'Авторизация' => '/users/sign_in',
     'Создание собеседника' => '/users/new',
-    'Регистрация' => '/users/sign_up'
+    'Регистрация' => '/users/sign_up',
+    'Авторизация ящика' => '/account_passwords/new'
 }
 
 Пусть(/^я захожу на страницу "(.*?)"$/) do |page|
@@ -31,7 +32,7 @@ When /^я нажимаю кнопку "([^"]*)"$/ do |button_name|
   end
 end
 
-When /^я на странице "([^"]*)"$/ do |page_name|
+When /^я должен быть на странице "([^"]*)"$/ do |page_name|
   expect(current_path).to eq(PAGES[page_name])
 end
 

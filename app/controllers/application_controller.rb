@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  protect_from_forgery with: :exception
   before_filter :authenticate_user!
   before_filter :set_account_password, if: :account_password_not_given?
+  before_filter :configure_permitted_parameters, if: :devise_controller?
   private
 
   def set_account_password
@@ -16,7 +17,9 @@ class ApplicationController < ActionController::Base
   end
 
   def get_pop(account_password_crypted)
-    account_password = Encryptor.decrypt(ENV['ACCOUNT_PASSWORD_KEY'], account_password_crypted, true, :account_password_salt, session)
+    account_password = Encryptor.decrypt(ENV['ACCOUNT_PASSWORD_KEY'],
+                                         account_password_crypted,
+                                         session[:account_password_salt])
     Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
     pop = Net::POP3.new("pop.#{mail_server_and_domain(current_user.email)}")
     pop.start(current_user.email, account_password)
@@ -29,9 +32,16 @@ class ApplicationController < ActionController::Base
   end
 
   def exception_log(e)
-    Rails.logger.info "#############################   EXCEPTION   ###########################"
+    Rails.logger.info "#{'#'*30}EXCEPTION#{'#'*30}"
     Rails.logger.info "#{e.class} : #{e.message}"
     Rails.logger.info "#{e.backtrace.select{|t| t.include?("#{Rails.root}") }.join("\n\t")}"
+  end
+
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) do |u|
+      u.permit(:name, :email, :password, :password_confirmation)
+    end
   end
 
 end

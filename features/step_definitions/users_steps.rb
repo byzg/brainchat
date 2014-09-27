@@ -1,15 +1,13 @@
 #coding: utf-8
-def email_from_name(name)
-  "#{name}@mail.ru"
-end
-def is_number?(obj)
-  obj.to_s == obj.to_i.to_s
-end
-Пусть(/^существует (.*?)$/) do |user_name|
-  user = User.new(name: user_name, email: email_from_name(user_name),
-                  password: 'qwe321', password_confirmation: 'qwe321')
-  expect(user.valid?).to be true
-  user.confirm!
+Пусть(/^существует пользователь(?: (.*?))?$/) do |user_name|
+  expect do
+    user = unless user_name.nil?
+      FactoryGirl.build :user, name: user_name, email: email_from_name(user_name)
+    else
+      FactoryGirl.build :user
+    end
+    user.confirm!
+  end.to change{User.count}
 end
 
 Пусть(/^юзером создается (.*?)$/) do |user_name|
