@@ -1,16 +1,21 @@
-$ ->
-  no_results_text = switch $('input#locale').val()
+no_results_text = ->
+  switch $('input#locale').val()
     when 'ru' then 'Результатов нет'
     when 'en' then 'No results match'
-  # enable chosen js
+    else 'Результатов нет'
+
+runChosen = ->
   $('.chosen-select').chosen
     allow_single_deselect: true
-    no_results_text: no_results_text
+    no_results_text: no_results_text()
     width: '200px'
-  $('a[rel="modal:open"]').click ->
-    i = 1
+
+$( document ).ready ->
+  runChosen()
+  $('a[data-toggle="modal"], button[data-toggle="modal"]').click ->
     intervalID = setInterval( ->
-      if $('.modal.current').length != 0
-        $('.chosen-select').chosen({no_results_text: no_results_text})
-        clearInterval(intervalID)
-    , 50)
+      chosenSelect = $('.chosen-select')
+      if $('.modal[style="display: block;"]').length != 0 && chosenSelect.length != 0
+        runChosen()
+        clearInterval(intervalID) if chosenSelect.attr('style') == "display: none;"
+    , 500)

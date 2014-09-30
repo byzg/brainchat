@@ -1,0 +1,10 @@
+h3.text-center= t('.title')
+-unless collection.blank?
+  = render partial: 'tables'
+-else
+  .text-center
+    = t('.no_chats')
+    - if current_user.have_friends?
+      = link_to t('submit.create'), new_chat_path, 'data-toggle' => 'modal', 'data-target' => "#small_modal"
+    -else
+      == t('.create_chat_without_friends', add: link_to_modal( t('.add_friend'), new_user_friend_assignment_path))

@@ -4,4 +4,3 @@
 //= require turbolinks
 //= require chosen-jquery
 //= require_tree .
-//= require jquery.modal
