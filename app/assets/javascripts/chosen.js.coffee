@@ -5,17 +5,24 @@ no_results_text = ->
     else 'Результатов нет'
 
 runChosen = ->
-  $('.chosen-select').chosen
-    allow_single_deselect: true
-    no_results_text: no_results_text()
-    width: '200px'
+  chosenSelect = $('.chosen-select')
+  unless chosenSelect.length == 0
+    $('.chosen-select').chosen
+      allow_single_deselect: true
+      no_results_text: no_results_text()
+      width: '200px'
 
-$( document ).ready ->
-  runChosen()
-  $('a[data-toggle="modal"], button[data-toggle="modal"]').click ->
+runChosen()
+$('a[rel="modal:open"]').click ->
+  if AbstractChosen.browser_is_supported()
+    modalCurrent = []
+    tred = 0
     intervalID = setInterval( ->
-      chosenSelect = $('.chosen-select')
-      if $('.modal[style="display: block;"]').length != 0 && chosenSelect.length != 0
+      tred++
+      modalCurrent = $('.modal.current') if modalCurrent.length == 0
+      if modalCurrent.length != 0
         runChosen()
-        clearInterval(intervalID) if chosenSelect.attr('style') == "display: none;"
-    , 500)
+        if $('.modal.current .chosen-select').attr('style') == "display: none;"
+          clearInterval(intervalID)
+      clearInterval(intervalID) if tred > 300
+    , 150)

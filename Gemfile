@@ -5,6 +5,7 @@ gem 'pg'
 gem 'sass'
 gem 'sass-rails',   '~> 4.0.3'
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap-rails-helpers', git: 'git://github.com/byzg/bootstrap-rails-helpers.git'
 gem 'autoprefixer-rails'
 gem 'uglifier', '>= 1.0.3'
 gem 'coffee-rails', '~> 4.0.0'
@@ -12,12 +13,12 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'inherited_resources'
 gem 'simple_form'
+gem 'jquery-modal-rails'
 gem 'devise'
 gem 'devise-i18n-views'
 gem 'html2haml'
 gem 'chosen-rails'
 gem 'jquery-ui-rails'
-gem 'twitter-bootstrap-rails'
 gem 'turbolinks'
 gem 'slim-rails'
 group :production do
@@ -44,4 +45,8 @@ group :test do
   gem 'factory_girl_rails'
   gem 'poltergeist'
   gem 'spring-commands-cucumber'
+  gem 'email_spec'
 end
+
+# gem 'high_voltage' # для работы со статическими страницами
+# gem 'heroku_san' # для развертывания стейжинга

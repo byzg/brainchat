@@ -1,17 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :authenticate_user!
-  before_filter :exclude_layout
   before_filter :set_account_password, if: :account_password_not_given?
   before_filter :configure_permitted_parameters, if: :devise_controller?
   private
 
-  def exclude_layout
-    params[:layout] = !(params[:layout] == 'false')
-  end
-
   def set_account_password
-    redirect_to new_account_password_path
+    redirect_to new_account_password_path,
+                flash: {warning: t('account_passwords.new.warning_text', email: current_user.email)}
   end
   def account_password_not_given?
     user_signed_in? && !(session[:current_user_account_password])

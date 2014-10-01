@@ -12,11 +12,6 @@ module ApplicationHelper
     content_tag :table, table.html_safe, html_opt
   end
 
-  def link_to_modal(content, path, target='#modal-sm', opts={})
-    opts.merge!({'data-toggle' => 'modal', 'data-target' => target})
-    link_to content, with_query(path, {layout: false}), opts
-  end
-
   def with_query(str_url, hash_query)
     require 'uri'
     uri =  URI.parse(str_url)
@@ -24,5 +19,9 @@ module ApplicationHelper
     hash_query.each {|k,v| new_query_ar << [k, v] }
     uri.query = URI.encode_www_form(new_query_ar)
     uri.to_s
+  end
+
+  def modal?
+    request.format == '*/*'
   end
 end

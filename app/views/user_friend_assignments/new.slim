@@ -1,17 +1,11 @@
-.col-xs-8.centered
+div class="col-xs-#{modal? ? 12 :8} centered text-center"
   .modal-header
-    - unless params[:layout]
-      button.close aria-hidden="true" data-dismiss="modal" type="button"  &times;
     h4= t('user_friend_assignments.index.add_friend')
-  .modal-body
-    = simple_form_for resource do |f|
+  = simple_form_for resource do |f|
+    .modal-body
       = f.input :friend_id, label: false, required: true,
            as: :select, collection: @not_friends,
             input_html: {multiple: false, class: 'chosen-select', 'data-placeholder' => t('.select_friend')}
       = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
-      /= f.submit t('submit.add'), class: 'btn btn-success'
-  .modal-footer
-    - unless params[:layout]
-      button.btn.btn-warning data-dismiss="modal" type="button"
-        = t('cancel')
-    button.btn.btn-primary type="button"
+    .modal-footer
+      = f.submit t('submit.add'), class: 'btn btn-primary'

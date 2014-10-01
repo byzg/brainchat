@@ -13,6 +13,7 @@ ru:
         password_confirmation: 'Подтверждение пароля'
         remember_me: 'Запомнить меня'
         confirmation_token: 'Ключ подтверждения'
+        reset_password_token: 'Ключ сбоса пароля'
       chat:
         users: 'Собеседники'
         subject: 'Тема'
@@ -33,6 +34,9 @@ ru:
             password_confirmation:
               confirmation: ' не совпадает с паролем'
             confirmation_token:
+              invalid: 'неверен'
+            reset_password_token:
+              blank: 'неверен'
               invalid: 'неверен'
         user_friend_assignment:
           attributes:

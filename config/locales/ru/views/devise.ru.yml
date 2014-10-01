@@ -2,7 +2,7 @@ ru:
   devise:
     confirmations:
       new:
-        resend_confirmation_instructions: Выслать повторно письмо с активацией
+        resend_confirmation_instructions: Выслать письмо с активацией
     mailer:
       confirmation_instructions:
         action: Активировать
@@ -26,7 +26,8 @@ ru:
     passwords:
       new:
         forgot_your_password: Забыли пароль?
-        send_me_reset_password_instructions: Выслать новый пароль
+        description: 'Укажите Ваш e-mail и мы пришлем Вам инструкции для смены пароля.'
+        send_me_reset_password_instructions: Выслать инструкции
       edit:
         change_your_password: Изменить пароль
         new_password: Новый пароль
@@ -43,13 +44,13 @@ ru:
         sign_up: Регистрация
     sessions:
       new:
-        sign_in: Войти
+        sign_in: Вход
     shared:
       links:
         didn_t_receive_confirmation_instructions: Не получили подтверждение?
         didn_t_receive_unlock_instructions: Не получили код разблокировки?
         forgot_your_password: Забыли пароль?
-        sign_in: Войти
+        sign_in: Вход
         sign_in_with_provider:  'Войти с помощью: %{provider}'
         sign_up: Регистрация
     unlocks:

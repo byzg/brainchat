@@ -49,6 +49,12 @@ end
   visit "/users/confirmation?confirmation_token=#{user.confirmation_token}"
 end
 
+Тогда(/^я должен был пройти первый шаг авторизации$/) do
+  email = email_from_user_email_email(true, nil, nil)
+  step %|я должен быть на странице "Авторизация ящика"|
+  step %|я вижу "Для работы с сайтом необходимо ввести пароль от почтового ящика #{email}."|
+end
+
 #Пусть(/^разрешен вход в систему без ввода пароля от почтового ящика$/) do
 #  ApplicationController.any_instance.expects(:account_password_not_given?).returns(false)
 #end
