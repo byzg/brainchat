@@ -6,6 +6,9 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../../config/environment', __FILE__)
 require 'cucumber/rails'
 
+require 'email_spec' # add this line if you use spork/zeus/spring
+require 'email_spec/cucumber'
+
 unless ENV['SHOWME']
   require 'capybara/poltergeist'
   Capybara.register_driver :poltergeist do |app|
@@ -34,4 +37,5 @@ After do
   ensure
     mocha_teardown
   end
+  FactoryGirl.reload
 end
