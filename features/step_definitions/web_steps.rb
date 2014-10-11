@@ -4,11 +4,14 @@ PAGES={
     'Авторизация' => '/users/sign_in',
     'Создание собеседника' => '/users/new',
     'Регистрация' => '/users/sign_up',
-    'Авторизация ящика' => '/account_passwords/new'
+    'Авторизация ящика' => '/account_passwords/new',
+    'Восстановление пароля' => '/users/password/new',
+    'Изменение пароля' => '/users/password/edit',
+    'Повторная отправка подтверждения' => '/users/confirmation/new'
 }
 
 Пусть(/^я захожу на страницу "(.*?)"$/) do |page|
-  visit PAGES[page]
+  visit (PAGES[page] || page)
 end
 
 Пусть(/^я вижу "(.*?)"$/) do |text|
@@ -32,8 +35,13 @@ When /^я нажимаю кнопку "([^"]*)"$/ do |button_name|
   end
 end
 
+Пусть(/^я нажимаю(?: первую)? ссылку с текстом "(.*?)"$/) do |link_text|
+  page.all('a', text: link_text, visible: true).first.click
+end
+
 When /^я должен быть на странице "([^"]*)"$/ do |page_name|
-  expect(current_path).to eq(PAGES[page_name])
+  page = PAGES[page_name] || page_name
+  expect(current_path).to match(/^#{page}/)
 end
 
 Пусть(/^я жду (\d+) секунд.*$/) do |seconds|

@@ -1,8 +1,0 @@
-.span4.offset1
-  %h3= t('user_friend_assignments.index.add_friend')
-  = simple_form_for resource do |f|
-    = f.input :friend_id, label: false, required: true,
-     as: :select, collection: @not_friends,
-     input_html: {multiple: false, class: 'chosen-select', 'data-placeholder' => t('.select_friend')}
-    = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
-    = f.submit t('submit.add'), class: 'btn btn-success'

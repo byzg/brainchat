@@ -1,7 +1,9 @@
 ru:
   layouts:
     application:
-      brand: 'BrainChat'
+      navbar_header:
+        screen_reader_only: 'Меню'
+        brand: 'BrainChat'
       menu:
         account:
           edit: 'Редактировать'
