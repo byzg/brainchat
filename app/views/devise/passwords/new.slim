@@ -1,0 +1,9 @@
+h2.text-center= t('.forgot_your_password', default: 'Forgot your password?')
+span= t('.description')
+= simple_form_for(resource, url: password_path(resource_name),
+                  html: { role: 'form', class: 'margin-top-all-2' }) do |f|
+  = f.input :email
+  = f.button :submit, t('.send_me_reset_password_instructions',
+                         default: 'Send me reset password instructions'),
+                      class: 'col-xs-12'
+  = render 'devise/shared/links'

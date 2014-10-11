@@ -1,0 +1,4 @@
+- deprecation_warn = 'Rendering partials devise/_links.erb is deprecated'
+- deprecation_warn << 'please use devise/shared/_links.erb instead.'
+- ActiveSupport::Deprecation.warn deprecation_warn
+= render 'shared/links'

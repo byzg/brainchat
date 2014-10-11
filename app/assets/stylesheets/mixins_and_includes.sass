@@ -1,0 +1,21 @@
+@mixin skip-padding($side)
+  @if $side == ''
+    .skip-padding
+      padding: 0 !important
+  @else
+    .skip-padding-#{$side}
+      padding-#{$side}: 0 !important
+
+@mixin align-text($side)
+  .text-#{$side}
+    text-align: #{$side} !important
+
+@include skip-padding('')
+@include skip-padding('left')
+@include skip-padding('right')
+@include skip-padding('top')
+@include skip-padding('bottom')
+@include align-text('right')
+@include align-text('left')
+@include align-text('center')
+

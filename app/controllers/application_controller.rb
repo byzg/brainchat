@@ -6,7 +6,8 @@ class ApplicationController < ActionController::Base
   private
 
   def set_account_password
-    redirect_to new_account_password_path
+    redirect_to new_account_password_path,
+                flash: {warning: t('account_passwords.new.warning_text', email: current_user.email)}
   end
   def account_password_not_given?
     user_signed_in? && !(session[:current_user_account_password])

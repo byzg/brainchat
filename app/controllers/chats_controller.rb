@@ -1,5 +1,6 @@
 class ChatsController < InheritedResources::Base
   actions :index, :new, :create
+  before_action :for_chat_need_friend, only: [:new, :create]
 
   def create
     params[:chat][:user_ids].concat(["#{current_user.id}"])
@@ -28,6 +29,14 @@ class ChatsController < InheritedResources::Base
   protected
   def begin_of_association_chain
     current_user
+  end
+
+  private
+  def for_chat_need_friend
+    unless current_user.have_friends?
+      redirect_to(new_user_friend_assignment_path,
+                flash: {info: t('chats.index.create_chat_without_friends', add: t('chats.index..add_friend'))})
+    end
   end
 
 end

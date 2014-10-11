@@ -1,2 +1,61 @@
+$navbar-border-radius: 0;
+$font-size-large: 22px;
+$dropdown-link-hover-color: white;
+$dropdown-link-hover-bg: #0081c2;
+$gray-light: #999999;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+@mixin margin-cycle($size) {
+  $elem: 5px;
+  $sides: top bottom;
+  @each $side in $sides {
+    @for $i from 1 to 12 {
+      .margin-#{$side}-#{$size}-#{$i} { margin-#{$side}: $elem * $i; }
+    }
+  }
+}
+
+@mixin responsive-margin-styles() {
+  @include margin-cycle('all');
+  @media (max-width: $screen-xs-max) { @include margin-cycle('xs')}
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @include margin-cycle('sm')
+  }
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+    @include margin-cycle('md')
+  }
+  @media (min-width: $screen-lg-min) { @include margin-cycle('lg') }
+}
+
+body .modal.current {
+  bottom: initial;
+  width: 90%;
+  max-width: 430px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-right: auto;
+  a.close-modal{
+    background: url('/images/close.png') no-repeat 0 0;
+    opacity: 0.7;
+    top: 0;
+    right: 0;
+  }
+  a.close-modal:hover{ opacity: 1;}
+}
+body .modal-spinner {
+  background: url('/images/spinner.gif') no-repeat scroll center center #111;
+}
+
+.alert-error {
+  @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text)
+}
+
+@media (min-width: $screen-sm-min) {
+  .form-group div label input[type="checkbox"] { margin-top: 11px }
+}
+
+body { padding-top: 50px; }
+
+@include responsive-margin-styles();

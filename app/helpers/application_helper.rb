@@ -11,4 +11,17 @@ module ApplicationHelper
     end
     content_tag :table, table.html_safe, html_opt
   end
+
+  def with_query(str_url, hash_query)
+    require 'uri'
+    uri =  URI.parse(str_url)
+    new_query_ar = URI.decode_www_form(uri.query || '')
+    hash_query.each {|k,v| new_query_ar << [k, v] }
+    uri.query = URI.encode_www_form(new_query_ar)
+    uri.to_s
+  end
+
+  def modal?
+    request.format == '*/*'
+  end
 end

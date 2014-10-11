@@ -1,0 +1,11 @@
+div class="col-xs-#{modal? ? 12 :8} centered text-center"
+  .modal-header
+    h4= t('user_friend_assignments.index.add_friend')
+  = simple_form_for resource do |f|
+    .modal-body
+      = f.input :friend_id, label: false, required: true,
+           as: :select, collection: @not_friends,
+            input_html: {multiple: false, class: 'chosen-select', 'data-placeholder' => t('.select_friend')}
+      = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
+    .modal-footer
+      = f.submit t('submit.add'), class: 'btn btn-primary'
