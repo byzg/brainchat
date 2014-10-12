@@ -1,3 +1,0 @@
-= simple_form_for :account_password, url: account_passwords_path do |f|
-  = f.input :pass, label: "#{t('.account_password_label', email: current_user.email)}:", as: :password
-  = f.submit t('submit.send'), class: 'btn btn-success'

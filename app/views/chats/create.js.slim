@@ -1,0 +1,5 @@
+- if resource.errors.empty?
+  | $('#chat_list tbody').append("#{j render partial: 'chats/chat', object: resource}");
+  | $('.jquery-modal.blocker').click();
+- else
+  | $('form#new_chat').prepend("#{j devise_error_messages!}")

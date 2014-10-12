@@ -1,0 +1,8 @@
+.alert.alert-warning.alert-dismissable
+  button.close type="button" data-dismiss="alert" aria-hidden="true" &times;
+  = t('account_passwords.new.warning_text', email: current_user.email)
+.col-xs-10.col-sm-5.centered
+  = simple_form_for :account_password, url: account_passwords_path do |f|
+    = f.input :pass, label: "#{t('.account_password_label', email: current_user.email)}:", as: :password
+    = f.input :development, as: :boolean if Rails.env.development?
+    = f.button :submit, t('submit.send'), class: 'col-xs-12'

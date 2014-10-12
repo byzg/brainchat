@@ -1,15 +1,18 @@
 module ChatHelper
 
-  def details_hash_default
-    first_chat = collection.first
-    messages_of_first_chat = Message.available_messages(first_chat, current_user)
-    last_message = messages_of_first_chat.try(:last).try(:created_at) || "-"
-    {
-        Chat.human_attribute_name('created_at') => first_chat.created_at,
-        t('.details.owner') => first_chat.owner.name,
-        t('.details.messages_count') => messages_of_first_chat.try(:count).to_i,
-        t('.details.last_message') => last_message
+  def details_hash
+    messages = Message.available_messages(@chat, current_user)
+    messages_count = messages.try(:count).to_i
+    result = {
+        Chat.human_attribute_name('created_at') => @chat.created_at,
+        t('.owner') => @chat.owner.name,
+        t('.messages_count') => messages_count,
     }
+    if messages_count > 0
+      last_message_created_at = messages.last.created_at
+      result.merge!(t('.last_message_created_at') => last_message_created_at)
+    end
+    result
   end
 
 end

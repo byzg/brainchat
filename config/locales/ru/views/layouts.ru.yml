@@ -5,9 +5,11 @@ ru:
         screen_reader_only: 'Меню'
         brand: 'BrainChat'
       menu:
+        collapse: 'Меню'
         account:
           edit: 'Редактировать'
           logout: 'Выйти'
+          logout_from_account: 'Выйти из аккаунта %{email}'
         chats:
           title: 'Беседы'
           new: 'Создать новую'

@@ -1,0 +1,6 @@
+h5
+  b= "#{t('.title')}: #{@chat.subject}"
+= details_table(details_hash, {class: 'table table-bordered table-striped text-center'})
+h6
+  b= "#{t('.members')} #{@chat.users.pluck(:name).join(', ')}"
+a.update-current-chat.btn.btn-info= t('update')
