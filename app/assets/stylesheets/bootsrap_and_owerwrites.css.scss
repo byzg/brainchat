@@ -3,6 +3,7 @@ $font-size-large: 22px;
 $dropdown-link-hover-color: white;
 $dropdown-link-hover-bg: #0081c2;
 $gray-light: #999999;
+$table-bg-hover: #ecfafc;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -36,6 +37,8 @@ body .modal.current {
   padding-right: 10px;
   padding-left: 10px;
   margin-right: auto;
+  margin-top: 70px !important;
+  top: 0 !important;
   a.close-modal{
     background: url('/images/close.png') no-repeat 0 0;
     opacity: 0.7;
@@ -43,6 +46,8 @@ body .modal.current {
     right: 0;
   }
   a.close-modal:hover{ opacity: 1;}
+  .modal-header { border-bottom: none }
+  .modal-footer { border-top: none }
 }
 body .modal-spinner {
   background: url('/images/spinner.gif') no-repeat scroll center center #111;
@@ -59,3 +64,22 @@ body .modal-spinner {
 body { padding-top: 50px; }
 
 @include responsive-margin-styles();
+
+.navbar .non-collapse {
+  @media (max-width: $screen-xs-max) {
+    margin: 5px 0
+  }
+}
+
+table.table-bordered {
+  border-radius: 5px;
+  border-collapse: separate;
+  tr {
+    td {
+      border-bottom: none;
+      border-right: none;
+      &:first-child { border-left: none; }
+    }
+    &:first-child td { border-top: none; }
+  }
+}

@@ -3,17 +3,15 @@ ru:
     new:
       title: 'Создание беседы'
       subject_placeholder: 'Введите тему'
-      select_friends: 'Выберите собеседников'
+      select_friends: 'Введите имена собеседников'
     index:
       title: 'Беседы с Вашим участием'
       no_chats: 'Бесед пока нет.'
       create_chat_without_friends: 'Чтобы создать беседу %{add} собеседников'
       add_friend: 'добавьте'
-    tables:
-      chat: 'Беседа'
-      details:
-        title: 'Подробные сведения'
-        owner: 'Создатель'
-        messages_count: 'Всего сообщений'
-        last_message: 'Последнее сообщение'
-        members: 'Участники:'
+    details:
+      title: 'Подробные сведения'
+      owner: 'Создатель'
+      messages_count: 'Всего сообщений'
+      last_message_created_at: 'Время последнего сообщения'
+      members: 'Участники:'

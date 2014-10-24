@@ -1,10 +1,18 @@
-h3.text-center= t('.title')
--unless collection.blank?
-  = render partial: 'tables'
--else
+#chats-index
+  h3.text-center
+    b= t('.title')
   .text-center
-    = "#{t('.no_chats')} "
-    - if current_user.have_friends?
-      = link_to t('submit.create'), new_chat_path, 'data-toggle' => 'modal', 'data-target' => "#small_modal"
-    -else
+    - have_friends = current_user.have_friends?
+    - if collection.blank?
+      = "#{t('.no_chats')} "
+      - if have_friends
+        = link_to_modal t('submit.create'), new_chat_path, 'data-toggle' => 'modal', 'data-target' => '#small_modal'
+    - unless have_friends
       == t('.create_chat_without_friends', add: link_to_modal( t('.add_friend'), new_user_friend_assignment_path))
+  - unless collection.blank?
+    .col-xs-12.col-sm-5
+      table#chat_list.table.table-hover.table-bordered.cursor-pointer.text-center
+        = render partial: 'chat', collection: collection
+    .hidden-xs.col-sm-7.details-table
+      .loading
+      .details

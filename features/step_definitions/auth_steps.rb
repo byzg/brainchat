@@ -34,6 +34,10 @@ end
   end
 end
 
+Пусть(/^почтовый сервер не отвечает$/) do
+  Net::POP3.any_instance.stubs(:start).raises(Net::OpenTimeout)
+end
+
 Тогда(/^я регистрируюсь как юзер c именем "(.*?)" емейлом "(.*?)" паролем "(.*?)"(?: подтверждением пароля "(.*?)")?$/) do |name, email, pass, pass_conf|
   pass_conf = pass unless pass_conf
   step %|я захожу на страницу "Регистрация"|
@@ -54,7 +58,3 @@ end
   step %|я должен быть на странице "Авторизация ящика"|
   step %|я вижу "Для работы с сайтом необходимо ввести пароль от почтового ящика #{email}."|
 end
-
-#Пусть(/^разрешен вход в систему без ввода пароля от почтового ящика$/) do
-#  ApplicationController.any_instance.expects(:account_password_not_given?).returns(false)
-#end

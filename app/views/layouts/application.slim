@@ -15,15 +15,22 @@ html lang='en'
     /= hidden_field_tag 'locale', I18n.locale
     nav class='navbar navbar-fixed-top navbar-inverse' role='navigation'
       .container
-        .navbar-header
-          - if current_user
-            button.navbar-toggle data-toggle='collapse' type='button' data-target='#current-user-collapse-navbar'
-              span.sr-only = t('.navbar_header.screen_reader_only')
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
+        .navbar-header.pull-left
           = link_to t('.navbar_header.brand'), root_path, class: 'navbar-brand'
         - if current_user
+          .navbar-header.pull-right
+            p.navbar-text.hidden-xs= current_user.email
+            ul.navbar-nav.nav.non-collapse
+              li data-toggle='tooltip' data-placement='bottom' title="#{t('.menu.account.logout_from_account', email: current_user.email)}"
+                = link_to destroy_user_session_path, method: 'delete' do
+                  span.glyphicon.glyphicon-log-out
+          .navbar-header
+            button.navbar-toggle data-toggle='collapse' type='button' data-target='#current-user-collapse-navbar'
+              div data-toggle='tooltip' data-placement='bottom' title="#{t('.menu.collapse')}"
+                span.sr-only = t('.navbar_header.screen_reader_only')
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
           #current-user-collapse-navbar.collapse.navbar-collapse
             ul.nav.navbar-nav
               li.dropdown
@@ -49,16 +56,8 @@ html lang='en'
                     li= link_to_modal t('submit.add'), new_user_friend_assignment_path
                   - unless current_page?(new_user_path)
                     li= link_to_modal t('submit.create'), new_user_path
-            ul.navbar-nav.nav.navbar-right
-              li.dropdown
-                a.dropdown-toggle data-toggle='dropdown' href='#'
-                  = current_user.email
-                  b.caret
-                ul.dropdown-menu
-                  li.divider
-                  li= link_to t('.menu.account.logout'), destroy_user_session_path, method: 'delete'
         - else
-          #non-current-user-collapse-navbar.collapse.navbar-collapse
+          .navbar-header.pull-left
             ul.navbar-nav.nav
               - devise_link_list.each do |link|
                 li.hidden-xs== link

@@ -2,13 +2,19 @@ class ChatsController < InheritedResources::Base
   actions :index, :new, :create
   before_action :for_chat_need_friend, only: [:new, :create]
 
+  def new
+    @friends = current_user.friends.collect{|friend| [friend.name, friend.id]}
+    super
+  end
+
   def create
-    params[:chat][:user_ids].concat(["#{current_user.id}"])
     create! do |_, failure|
-      failure.html {return redirect_to :back, alert: resource.errors.full_messages }
+      if slash_request?
+        return render template: 'chats/create'
+      else
+        failure.html { return redirect_to :back, alert: resource.errors.full_messages }
+      end
     end
-    resource.owner = current_user
-    resource.save
   end
 
   def show
@@ -17,15 +23,10 @@ class ChatsController < InheritedResources::Base
   end
 
   def details
-    chat = Chat.find(params[:id])
-    messages = Message.available_messages(chat, current_user)
-    render json: {created_at: chat.created_at.to_s,
-                  owner_name: chat.owner.name,
-                  messages_count: messages.try(:count).to_i,
-                  last_message: messages.try(:last).try(:created_at).to_s,
-                  users_names: chat.users.pluck(:name).join(', ')
-                  }
+    @chat = collection.find(params[:id])
+    return render(plain: I18n.t('controllers.chats.details.isnt_inclued_in_chat')) unless @chat
   end
+
   protected
   def begin_of_association_chain
     current_user
@@ -37,6 +38,14 @@ class ChatsController < InheritedResources::Base
       redirect_to(new_user_friend_assignment_path,
                 flash: {info: t('chats.index.create_chat_without_friends', add: t('chats.index..add_friend'))})
     end
+  end
+
+  def chat_params
+    if !@chat_params && params[:chat] && params[:chat][:user_ids].is_a?(Array)
+      params[:chat][:user_ids] = (params[:chat][:user_ids] - [''] + [current_user.id]).uniq
+      params[:chat][:owner_id] = current_user.id
+    end
+    @chat_params ||= params.require(:chat).permit(:subject, :owner_id, user_ids: [])
   end
 
 end

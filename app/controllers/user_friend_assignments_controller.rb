@@ -9,4 +9,9 @@ class UserFriendAssignmentsController < InheritedResources::Base
     super
   end
 
+  private
+  def user_friend_assignment_params
+    @user_friend_assignment_params ||= params.require(:user_friend_assignment).permit(:friend_id).merge(user_id: current_user.id)
+  end
+
 end
