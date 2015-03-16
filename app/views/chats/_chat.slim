@@ -1,3 +1,11 @@
-tr id="chat_#{chat.id}" data-link="#{details_chat_path(chat.id)}"
-  td= chat.subject
-  td= link_to t('go'), chat_path(chat.id)
+tr.message data-link="#{chat_path(chat.id)}"
+  - last_message = chat.messages.last 
+  td 
+    table
+      tr: td.truncate: b= chat.subject
+      - if last_message
+        tr: td.truncate= "#{last_message.user.name}:"
+        tr: td.truncate = last_message.text 
+      - else
+        tr: td.truncate 
+          | <Нет сообщений>

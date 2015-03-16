@@ -46,7 +46,7 @@ end
 
 Пусть(/^отправка писем (не)?успешна$/) do |fail|
   object = Mail::Message.any_instance
-  fail ? object.stubs(:deliver) : object.unstub(:deliver)
+  fail ? object.stub(:deliver) : object.unstub(:deliver)
 end
 
 #
@@ -123,6 +123,10 @@ Then /^(?:I|they) should see \/([^"]*?)\/ in the email body$/ do |text|
   current_email.default_part_body.to_s.should =~ Regexp.new(text)
 end
 
+Then /^я должен увидеть "(.*?)" в теле емейла$/ do |text|
+  current_email.default_part_body.to_s.should =~ Regexp.new(text)
+end
+
 Then /^(?:I|they) should see the email delivered from "([^"]*?)"$/ do |text|
   current_email.should be_delivered_from(text)
 end
@@ -185,7 +189,7 @@ end
 # Interact with Email Contents
 #
 
-When /^я нажимаю ссылку "([^"]*?)" в емейле(?: "([^"]*?)")?$/ do |link, address|
+When /^я нажимаю ссылку "(.*?)" в емейле(?: "(.*?)")?$/ do |link, address|
   visit_in_email(link, address)
 end
 
