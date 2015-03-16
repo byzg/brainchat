@@ -1,5 +1,6 @@
 #coding: utf-8
-Пусть(/^существует пользователь(?: (.*?))?$/) do |user_name|
+Пусть(/^существует пользователь(?: "(.*?)")?$/) do |user_name|
+  raise 'Для шага тербуется имя, но не email' if user_name =~ /@/
   expect do
     user = unless user_name.nil?
       FactoryGirl.build :user, name: user_name, email: email_from_name(user_name)
@@ -10,7 +11,7 @@
   end.to change{User.count}
 end
 
-Пусть(/^юзером создается (.*?)$/) do |user_name|
+Пусть(/^юзером создается "(.*?)"$/) do |user_name|
   step %|я захожу на страницу "Создание собеседника"|
   step %|я ввожу "#{user_name}" в поле "Имя"|
   step %|я ввожу "#{email_from_name(user_name)}" в поле "E-mail"|
