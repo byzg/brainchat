@@ -1,4 +1,5 @@
-class ChatsController < InheritedResources::Base
+class ChatsController < ApplicationController
+  inherit_resources
   actions :index, :new, :create
   before_action :for_chat_need_friend, only: [:new, :create]
 
@@ -22,14 +23,19 @@ class ChatsController < InheritedResources::Base
     @message = Message.new
   end
 
-  def details
-    @chat = collection.find(params[:id])
-    return render(plain: I18n.t('controllers.chats.details.isnt_inclued_in_chat')) unless @chat
+  def index
+    @chats = end_of_association_chain
+    .sort_by {|c| c.messages.last.try(:created_at) || DateTime.parse('01.01.1970')}
+    .reverse
   end
 
   protected
   def begin_of_association_chain
     current_user
+  end
+
+  def end_of_association_chain
+    super.includes(:messages).includes(messages: :user)
   end
 
   private

@@ -6,13 +6,20 @@ html lang='en'
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     title BrainChat
     = csrf_meta_tags
-    = javascript_include_tag 'additional', 'data-turbolinks-track' => true
+    = javascript_include_tag 'prelibs', 'data-turbolinks-track' => true
     /! Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag 'http://html5shim.googlecode.com/svn/trunk/html5.js'
+    = Gon::Base.render_data({})
     = stylesheet_link_tag    'application', :media => 'all', 'data-turbolinks-track' => true
   body
-    /= hidden_field_tag 'locale', I18n.locale
+    - if content_for?(:bamboo_menu)
+      / Begin Bamboo section
+      nav#main-nav.navigation.overflow.bamboo-menu
+        .bamboo-menu-container
+          = yield :bamboo_menu
+      / end Bamboo section
+    
     nav class='navbar navbar-fixed-top navbar-inverse' role='navigation'
       .container
         .navbar-header.pull-left
@@ -61,13 +68,25 @@ html lang='en'
             ul.navbar-nav.nav
               - devise_link_list.each do |link|
                 li.hidden-xs== link
-    .container
-      .row
-        .col-xs-12
-          = bootstrap_flash
-          - if current_user
-            = yield
-          -else
-            = devise_error_messages!
-            .col-xs-10.col-sm-5.centered= yield
-          = javascript_include_tag 'application', 'data-turbolinks-track' => true
+
+    - content_for :content do
+      .container
+        .row
+          .col-xs-12
+            = bootstrap_flash
+            - if current_user
+              = yield
+            -else
+              = devise_error_messages!
+              .col-xs-10.col-sm-5.centered= yield
+    - if content_for?(:bamboo_menu)
+      / Begin Bamboo section
+      #container                     
+        section#scroller.overflow
+          #content
+            / end Bamboo section
+            = yield :content
+    - else
+      = yield :content
+    = javascript_include_tag 'postlibs', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true

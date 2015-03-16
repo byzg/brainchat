@@ -18,11 +18,11 @@ end
   expect(page).to have_content text
 end
 
-When /^я ввожу "([^"]*)" в поле "([^"]*)"$/ do |value, field_id|
+When /^я ввожу "(.*?)" в поле "(.*?)"$/ do |value, field_id|
   fill_in field_id, with: value
 end
 
-When /^я нажимаю кнопку "([^"]*)"$/ do |button_name|
+When /^я нажимаю кнопку "(.*?)"$/ do |button_name|
   button_name = I18n.t(button_name[1..-1].to_sym) if button_name.first == ':'
   begin
     click_button button_name
@@ -39,7 +39,7 @@ end
   page.all('a', text: link_text, visible: true).first.click
 end
 
-When /^я должен быть на странице "([^"]*)"$/ do |page_name|
+When /^я должен быть на странице "(.*?)"$/ do |page_name|
   page = PAGES[page_name] || page_name
   expect(current_path).to match(/^#{page}/)
 end
@@ -50,4 +50,8 @@ end
 
 Пусть(/^я нажимаю на селектор "(.*?)"$/) do |selector|
   find(selector).click
+end
+
+When /^я не вижу "(.*?)"$/ do |label|
+  expect(page.has_no_content?(label)).to be true
 end

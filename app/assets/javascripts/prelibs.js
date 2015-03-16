@@ -1,5 +1,5 @@
 // This scripts will be at the HEAD of layout
-//= require jquery
+//= require jquery2
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks

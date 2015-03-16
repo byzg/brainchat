@@ -1,17 +1,17 @@
 module ApplicationHelper
   require 'cgi'
-  def details_table(details = {}, html_opt = {}, left_col = 4)
-    table = ''
-    right_col = 12 - left_col
-    details.each_pair do |k, v|
-      tr= content_tag :tr do
-        concat content_tag :td, k, class: "col-xs-#{left_col}"
-        concat content_tag :td, v, class: "col-xs-#{right_col}"
-      end
-      table += tr
-    end
-    content_tag :table, table.html_safe, html_opt
-  end
+  # def details_table(details = {}, html_opt = {}, left_col = 4)
+  #   table = ''
+  #   right_col = 12 - left_col
+  #   details.each_pair do |k, v|
+  #     tr= content_tag :tr do
+  #       concat content_tag :td, k, class: "col-xs-#{left_col}"
+  #       concat content_tag :td, v, class: "col-xs-#{right_col}"
+  #     end
+  #     table += tr
+  #   end
+  #   content_tag :table, table.html_safe, html_opt
+  # end
 
   def with_query(str_url, hash_query)
     require 'uri'

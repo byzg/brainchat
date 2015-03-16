@@ -1,8 +1,9 @@
 /*
  *= require jquery.modal
  *= require chosen
+ *= require bamboo
  *= require_self
  *= require_tree .
- *= require bootstrap-xxs.min
+ *= require bootstrap-xxs.min 
 */
 

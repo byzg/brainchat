@@ -1,0 +1,27 @@
+Wed, 04 Mar 2015 03:26:47 +0300
+README.rdoc	Sun, 16 Feb 2014 15:11:04 +0300
+app/controllers/account_passwords_controller.rb	Sat, 25 Oct 2014 01:32:30 +0300
+app/controllers/application_controller.rb	Sat, 25 Oct 2014 01:32:30 +0300
+app/controllers/chats_controller.rb	Sat, 25 Oct 2014 01:32:30 +0300
+app/controllers/messages_controller.rb	Sat, 25 Oct 2014 01:32:30 +0300
+app/controllers/user_friend_assignments_controller.rb	Sat, 25 Oct 2014 01:32:30 +0300
+app/controllers/users/registrations_controller.rb	Sun, 30 Mar 2014 01:12:42 +0300
+app/controllers/users_controller.rb	Sun, 30 Mar 2014 01:17:58 +0300
+app/helpers/application_helper.rb	Sat, 25 Oct 2014 01:32:30 +0300
+app/helpers/chat_helper.rb	Sat, 25 Oct 2014 01:32:30 +0300
+app/helpers/devise_helper.rb	Sat, 11 Oct 2014 18:53:14 +0300
+app/helpers/message_helper.rb	Sat, 26 Oct 2013 00:16:10 +0300
+app/mailers/message_mailer.rb	Wed, 19 Mar 2014 02:14:22 +0300
+app/models/chat.rb	Sat, 25 Oct 2014 01:32:30 +0300
+app/models/chat_user_assignment.rb	Sat, 27 Sep 2014 14:35:20 +0300
+app/models/message.rb	Mon, 20 Oct 2014 13:01:22 +0300
+app/models/user.rb	Sat, 27 Sep 2014 14:35:20 +0300
+app/models/user_friend_assignment.rb	Sat, 25 Oct 2014 01:32:30 +0300
+lib/application_controller_helper.rb	Sat, 25 Oct 2014 01:32:32 +0300
+lib/encryptor.rb	Sat, 27 Sep 2014 14:35:20 +0300
+lib/exceptions.rb	Sat, 27 Sep 2014 14:35:20 +0300
+lib/hash_field_accessor.rb	Sat, 27 Sep 2014 14:35:20 +0300
+lib/tasks/examples/gem_mail_example.rb	Wed, 05 Mar 2014 22:44:10 +0300
+lib/tasks/examples/mandrill_test.rb	Tue, 01 Apr 2014 20:32:16 +0300
+lib/tasks/examples/net_pop3_example.rb	Mon, 10 Mar 2014 03:39:34 +0300
+lib/tasks/examples/net_smtp_example.rb	Sun, 16 Mar 2014 20:52:58 +0300

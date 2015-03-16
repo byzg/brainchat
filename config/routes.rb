@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "users/registrations"}
   resources :chats, only: [:index, :new, :create, :show] do
     resources :messages, only: [:create]
-    get :details, on: :member
   end
   resources :messages, only: [] do
     get :check_email, on: :collection
