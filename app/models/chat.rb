@@ -1,6 +1,6 @@
 class Chat < ActiveRecord::Base
-  has_many :messages
-  has_many :chat_user_assignments
+  has_many :messages, dependent: :destroy
+  has_many :chat_user_assignments, dependent: :destroy
   has_many :users, through: :chat_user_assignments
   belongs_to :owner, class_name: 'User'
   validate :must_have_more_then_two_users

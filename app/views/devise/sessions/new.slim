@@ -3,7 +3,5 @@ h2.text-center= t('.sign_in', :default => 'Sign in')
                   html: {role: 'form'}) do |f|
   = f.input :email
   = f.input :password
-  - if devise_mapping.rememberable?
-    = f.input :remember_me, as: :boolean, label_html: {class: 'col-xxs-7 col-xs-5 col-sm-4 skip-padding-left skip-padding-right'}
   = f.button :submit, t('submit.sing_in'), class: 'col-xs-12'
   = render 'devise/shared/links'

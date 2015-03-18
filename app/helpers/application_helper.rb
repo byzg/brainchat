@@ -25,4 +25,11 @@ module ApplicationHelper
   def modal?
     request.format == '*/*'
   end
+
+  def avatar(user)
+    data_url = Rails.cache.fetch("avatar_#{user.id}") do
+      Identicon.data_url_for(user.id) 
+    end
+    image_tag data_url
+  end
 end

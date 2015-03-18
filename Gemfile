@@ -26,6 +26,7 @@ gem 'turbolinks'
 gem 'slim-rails'
 gem 'jbuilder'
 gem 'gon'
+gem 'identicon'
 group :production do
   gem 'rails_12factor'
 end

@@ -5,7 +5,6 @@ class MessagesController < InheritedResources::Base
   after_filter :mass_sending, only: :create
 
   def check_email
-    #Thread..new do end
     render json: {messages: receive}
   rescue Net::POPAuthenticationError => e
     handle_exception(e, 'authentication_error')
@@ -14,6 +13,12 @@ class MessagesController < InheritedResources::Base
   end
 
   private
+
+  def message_params
+    Rails.logger.info params
+    params.require(:message).permit(:text, :incomer_subject, :chat_id, :user_id)    
+  end
+
   def receive
     pop = get_pop(session[:current_user_account_password])
     pop_mails = pop.mails
@@ -51,39 +56,6 @@ class MessagesController < InheritedResources::Base
     pop.finish
     answer
   end
-
-  #def receive
-  #  Rails.logger.info "Вошли в ресив"; i = 0
-  #  while true
-  #    i += 1
-  #    Rails.logger.info "Итерация цикла #{i}"
-  #    pop = get_pop(session[:current_user_account_password])
-  #    pop_mails = pop.mails
-  #    count_new_letters = pop_mails.count - session[:last_mails_count]
-  #    Rails.logger.info "NEW_MESSAGES = #{count_new_letters}"
-  #    if count_new_letters > 0
-  #      session[:last_mails_count] = pop_mails.count
-  #      letters_raw = pop_mails.last(count_new_letters)
-  #      @letters = []
-  #      request_chat = Chat.find(params[:request_chat_id])
-  #      letters_raw.each do |letter|
-  #        l = MessageMailer.receive(letter.pop)
-  #        sender = request_chat.users.where(email: l[:from]).try(:first)
-  #        if sender && (current_user.is_owner?(request_chat) || sender.email == request_chat.owner.email)
-  #          @letters << l
-  #          Message.create(text: l[:text],
-  #                         incomer_subject: l[:subject],
-  #                         user_id: sender.id,
-  #                         chat_id: request_chat.id)
-  #        end
-  #      end
-  #      break
-  #      return (@letters.empty? ? 'none' : render_to_string(partial: 'messages/income_message'))
-  #    end
-  #    Rails.logger.info "Новых сообщений нет. Спим 10 секунд"
-  #    sleep 10
-  #  end
-  #end
 
   def mass_sending
     if resource.valid?
