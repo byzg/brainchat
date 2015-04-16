@@ -1,25 +1,27 @@
-$h_form_message: 150px
+// index
+#chats-index
+  .media 
+    padding: 5px
+    border: 1px solid #ddd
+    border-radius: 5px
+    border-collapse: separate
 
-#chat-container
-  height: 100%
-  #left_block
-    height: 100%
-    #form_message
-      height: $h_form_message !important
-      position: fixed
-      bottom: 4px
-      form#new_message
-        .input.text.required.message_text
-          textarea
-            width: 97.991392%
-            height: 100px
-            resize: none
-    #chat-history
-      position: absolute
-      bottom: $h_form_message + 4px + 3px
-      overflow-y: auto
-      .chat-history-message:hover
-        background-color: #faf2f2
-
-
-
+// show
+#left_block, #right_block
+  margin-top: 15px
+#left_block
+  height: 97%
+  display: table
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
+  ul#chat-history
+    display: table-row
+  form
+    display: table-cell
+    padding: 15px 0
+    vertical-align: bottom
+    textarea
+      resize: none
+#right_block
+  position: fixed
+  right: 0
+  

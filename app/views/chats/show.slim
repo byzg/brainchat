@@ -1,0 +1,14 @@
+/ = hidden_field_tag "request_chat_id", resource.id
+
+- content_for(:bamboo_menu)
+  = render partial: 'chats/users'
+
+.height-100#chat-container
+  .col-xs-12.col-sm-9#left_block
+    ul.media-list#chat-history= render partial: 'messages/message', collection: @available_messages
+    = simple_form_for @message, url: chat_messages_path(resource), method: :post, remote: true, id: 'form_message' do |f|
+        = f.input :text, label: false, input_html: {rows: false}
+        = f.input :incomer_subject, as: :hidden, input_html: { value: resource.subject }
+        = f.submit t('submit.send'), class: 'btn btn-info', 'data-disable-with' => t('submit.sending')
+      
+  .hidden-xs.col-sm-3#right_block= render partial: 'chats/users'

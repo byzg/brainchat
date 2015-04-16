@@ -1,11 +1,13 @@
-tr.message data-link="#{chat_path(chat.id)}"
-  - last_message = chat.messages.last 
-  td 
-    table
-      tr: td.truncate: b= chat.subject
-      - if last_message
-        tr: td.truncate= "#{last_message.user.name}:"
-        tr: td.truncate = last_message.text 
-      - else
-        tr: td.truncate 
-          | <Нет сообщений>
+li.media.cursor-pointer
+  = link_to chat_path(chat.id), class: 'nolink' do
+    - last_message = chat.messages.last 
+    div
+      b= chat.subject
+    - if last_message
+      - user = last_message.user
+      .pull-left.avatar= avatar(user)
+      .media-body
+        h5.media-heading.truncate= user.name
+        .truncate= last_message.text
+    - else
+        h5.media-heading.truncate= t('.no_messages')

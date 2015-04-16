@@ -1,4 +1,7 @@
-$('#chat-history').append("#{j render partial: 'messages/message', object: resource}");
-$('#chat-history').scrollTop($('#chat-history').scrollTop()+parseInt($('.chat-history-message').last().css('height')));
-$('#form_message textarea').val('');
-$('#form_message textarea').focus();
+mediaListSltr = $('#chat-history ul.media-list');
+textarea = $('#form_message textarea');
+console.log(mediaListSltr);
+mediaListSltr.append("#{j render partial: 'messages/message', object: resource}");
+mediaListSltr.scrollTop($('#chat-history ul.media-list').scrollTop()+parseInt(mediaListSltr).children('li.media:last-child').css('height')));
+textarea.val('');
+textarea.focus();

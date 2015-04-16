@@ -1,0 +1,10 @@
+ul.media-list
+  li.media
+    .pull-left.avatar= avatar(@owner)
+    .media-body
+      b
+        .media-heading
+          div= @owner.name
+          small
+            small.text-muted= @owner.email
+  = render partial: 'chats/user', collection: @users

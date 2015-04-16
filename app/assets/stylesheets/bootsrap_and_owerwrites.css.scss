@@ -83,3 +83,14 @@ table.table-bordered {
     &:first-child td { border-top: none; }
   }
 }
+
+.media {
+  max-height: 100px;
+  &:hover {
+    background-color: $table-bg-hover;
+  }
+  &:first-child {
+    margin-top: 15px;
+  }
+}
+  

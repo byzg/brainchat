@@ -1,0 +1,8 @@
+- unless user.is_owner?(resource)
+  li.media
+    .pull-left.avatar= avatar(user)
+    .media-body
+      .media-heading
+        div= user.name
+        small
+          small.text-muted= user.email

@@ -1,5 +1,5 @@
 doctype html
-html lang='en'
+html.height-100 lang='en'
   head
     meta charset="utf-8"
     meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
@@ -12,10 +12,10 @@ html lang='en'
       = javascript_include_tag 'http://html5shim.googlecode.com/svn/trunk/html5.js'
     = Gon::Base.render_data({})
     = stylesheet_link_tag    'application', :media => 'all', 'data-turbolinks-track' => true
-  body
+  body.height-100
     - if content_for?(:bamboo_menu)
       / Begin Bamboo section
-      nav#main-nav.navigation.overflow.bamboo-menu
+      nav#main-nav.navigation.overflow.bamboo-menu.visible-xs
         .bamboo-menu-container
           = yield :bamboo_menu
       / end Bamboo section
@@ -70,9 +70,9 @@ html lang='en'
                 li.hidden-xs== link
 
     - content_for :content do
-      .container
-        .row
-          .col-xs-12
+      .container.height-100
+        .row.height-100
+          .col-xs-12.height-100
             = bootstrap_flash
             - if current_user
               = yield
@@ -81,11 +81,12 @@ html lang='en'
               .col-xs-10.col-sm-5.centered= yield
     - if content_for?(:bamboo_menu)
       / Begin Bamboo section
-      #container                     
+      #container.visible-xs                    
         section#scroller.overflow
           #content
-            / end Bamboo section
-            = yield :content
+          / end Bamboo section
+          = yield :content
+      .hidden-xs.height-100= yield :content
     - else
       = yield :content
     = javascript_include_tag 'postlibs', 'data-turbolinks-track' => true
