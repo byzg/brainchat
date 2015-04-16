@@ -21,7 +21,6 @@ class ChatsController < ApplicationController
   def show
     return redirect_to root_path, alert: I18n.t('controllers.chats.show.not_found_or_no access') unless current_user.have_chat?(params[:id])
     @available_messages = Message.available_messages(resource, current_user)
-    # Message.where(text: 'C1') #
     @users = resource.users
     @owner = resource.owner
     @message = Message.new

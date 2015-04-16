@@ -1,6 +1,5 @@
 mediaListSltr = $('#chat-history ul.media-list');
 textarea = $('#form_message textarea');
-console.log(mediaListSltr);
 mediaListSltr.append("#{j render partial: 'messages/message', object: resource}");
 mediaListSltr.scrollTop($('#chat-history ul.media-list').scrollTop()+parseInt(mediaListSltr).children('li.media:last-child').css('height')));
 textarea.val('');
