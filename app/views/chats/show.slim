@@ -1,6 +1,6 @@
-/ = hidden_field_tag "request_chat_id", resource.id
+= hidden_field_tag "request_chat_id", resource.id
 
-- content_for(:bamboo_menu)
+- content_for(:bamboo_menu) do
   = render partial: 'chats/users'
 
 .height-100#chat-container

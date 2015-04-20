@@ -1,5 +1,12 @@
 - if resource.errors.empty?
-  | $('#chat_list tbody').append("#{j render partial: 'chats/chat', object: resource}");
+  | $('#chats-index ul.media-list').append("#{j render partial: 'chats/chat', object: resource}");
   | $('.jquery-modal.blocker').click();
 - else
-  | $('form#new_chat').prepend("#{j devise_error_messages!}")
+  | prependAlert = function() { form.prepend("#{j devise_error_messages!}"); }
+  | form = $('form#new_chat');
+  | closeBtn = form.find('.alert-block button.close');
+  | if (closeBtn.length > 0) {
+  |   closeBtn.click();
+  |   prependAlert();
+  | }
+  | else { prependAlert() }

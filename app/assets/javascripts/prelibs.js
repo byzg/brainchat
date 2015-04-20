@@ -6,3 +6,4 @@
 //= require chosen-jquery
 //= require jquery.modal
 //= require jquery.form
+//= require jquery.scrollTo

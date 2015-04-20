@@ -27,6 +27,7 @@ gem 'slim-rails'
 gem 'jbuilder'
 gem 'gon'
 gem 'identicon'
+gem 'jquery-scrollto-rails'
 group :production do
   gem 'rails_12factor'
 end

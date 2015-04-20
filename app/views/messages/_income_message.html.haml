@@ -1,7 +1,0 @@
--#encoding: utf-8
-- @letters.each do |letter|
-  .chat-history-message
-    %ul
-      %li= letter[:from]
-      %li= letter[:subject]
-      %li= letter[:text].gsub("\n", "<br>").html_safe

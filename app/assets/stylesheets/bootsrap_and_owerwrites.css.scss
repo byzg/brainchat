@@ -53,6 +53,9 @@ body .modal-spinner {
   background: url('/images/spinner.gif') no-repeat scroll center center #111;
 }
 
+.alert {
+  text-align: left !important
+}
 .alert-error {
   @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text)
 }

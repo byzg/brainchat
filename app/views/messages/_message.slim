@@ -1,5 +1,7 @@
 li.media.chat-history-message
   .pull-left.avatar= avatar(message.user)
   .media-body
-    h5.media-heading= message.user.name
+    h5.media-heading
+      = message.user.name
+      | :
     = message.text.gsub("\n", "<br>").html_safe

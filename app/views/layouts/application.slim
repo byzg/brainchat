@@ -81,12 +81,12 @@ html.height-100 lang='en'
               .col-xs-10.col-sm-5.centered= yield
     - if content_for?(:bamboo_menu)
       / Begin Bamboo section
-      #container.visible-xs                    
-        section#scroller.overflow
-          #content
+      #container.visible-xs                
+        section#scroller.overflow.scroller
+          / #content
           / end Bamboo section
           = yield :content
-      .hidden-xs.height-100= yield :content
+      .hidden-xs.height-100.scroller= yield :content
     - else
       = yield :content
     = javascript_include_tag 'postlibs', 'data-turbolinks-track' => true

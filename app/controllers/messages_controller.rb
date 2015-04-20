@@ -33,7 +33,7 @@ class MessagesController < InheritedResources::Base
         l = MessageMailer.receive(letter.pop)
         sender = request_chat.users.where(email: l[:from]).try(:first)
         if sender && (current_user.is_owner?(request_chat) || sender.email == request_chat.owner.email)
-          @letters << l
+          logg l
           if l[:x_bch_id]
             begin
               message_id = Encryptor.decrypt(ENV['X_BCH_MESSAGE_ID'], l[:x_bch_id])
@@ -43,13 +43,15 @@ class MessagesController < InheritedResources::Base
               message_exist = Message.find_by_id(message_id)
             end
           end
-          Message.create(text: l[:text],
-                         incomer_subject: l[:subject],
-                         user_id: sender.id,
-                         chat_id: request_chat.id) unless message_exist
+          message = Message.new(text: l[:text],
+                                incomer_subject: l[:subject],
+                                user_id: sender.id,
+                                chat_id: request_chat.id)
+          @letters << message
+          message.save unless message_exist
         end
       end
-      answer = @letters.empty? ? 'none' : render_to_string(partial: 'messages/income_message')
+      answer = @letters.empty? ? 'none' : render_to_string(partial: 'messages/message', collection: @letters)
     else
       answer = 'none'
     end

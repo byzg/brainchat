@@ -14,7 +14,7 @@ class MessageMailer < ActionMailer::Base
   def receive(email)
     Rails.logger.info '------------   going receive     ----------------------'
     letter = {from: email.from[0], subject: email.subject,
-              charset: email.charset, x_bch_id: email['X-BCH-ID'].to_s}
+              charset: email.charset, x_bch_id: email['X-BCH-ID'].to_s.presence}
     letter[:text] = if email.multipart?
       email.text_part ? decoded_text(email.text_part) : nil
     else

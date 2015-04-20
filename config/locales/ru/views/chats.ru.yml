@@ -15,5 +15,5 @@ ru:
         messages_count: 'Всего сообщений'
         last_message_created_at: 'Время последнего сообщения'
         members: 'Участники:'
-    _chat:
+    chat:
       no_messages: <Нет сообщений>
