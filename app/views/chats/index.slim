@@ -10,5 +10,5 @@
       - else
         == t('.create_chat_without_friends', add: link_to_modal( t('.add_friend'), new_user_friend_assignment_path))
   - unless @chats.blank?
-    .col-xs-12.centered
+    .col-xs-12.col-md-9.centered
       ul.media-list= render partial: 'chat', collection: @chats

@@ -53,6 +53,7 @@ class MessagesController < InheritedResources::Base
       end
       answer = @letters.empty? ? 'none' : render_to_string(partial: 'messages/message', collection: @letters)
     else
+      session[:last_mails_count] = pop_mails.count if count_new_letters < 0
       answer = 'none'
     end
     pop.finish

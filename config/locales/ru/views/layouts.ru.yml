@@ -12,7 +12,7 @@ ru:
           logout_from_account: 'Выйти из аккаунта %{email}'
         chats:
           title: 'Беседы'
-          new: 'Создать новую'
+          new: 'Создать'
         friedns:
           title: 'Собеседники'
         search:

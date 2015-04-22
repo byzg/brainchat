@@ -20,6 +20,8 @@ ru:
         user_ids: 'Собеседники'
         created_at: 'Дата создания'
         owner_id: 'Создатель'
+      user_friend_assignment:
+        friend_id: 'Собеседник'
     errors:
       models:
         user:
@@ -42,6 +44,8 @@ ru:
           attributes:
             user_id:
               taken: "Невозможно добавить дважды одного и того же собеседника"
+            friend_id: 
+              blank: 'не выбран'
       messages:
         record_invalid: 'Запись недействительна'
         blank: '- поле не может быть пустым'

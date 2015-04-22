@@ -2,3 +2,6 @@ ru:
   chosen_rails:
     friends_data_placeholder: 'Из Ваших собеседников'
     no_results_text: 'Ничего не найдено..'
+  simple_form:
+    required:
+      text: 'Обязательно для заполнения'

@@ -1,0 +1,5 @@
+#friends-index
+  h3.text-center
+    b= t('.title')
+  .col-xs-12.col-md-6.centered
+    ul.media-list= render partial: :user, collection: @friends

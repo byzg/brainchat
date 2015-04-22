@@ -1,4 +1,6 @@
-= simple_form_for resource, url: create_by_another_user_users_path do |f|
-  = f.input :name
-  = f.input :email
-  = f.submit t('submit.create'), class: 'btn btn-success'
+= simple_form_for resource, url: create_by_another_user_users_path, html: {role: 'form'} do |f|
+  .modal-body
+    = f.input :name
+    = f.input :email
+  .modal-footer
+    = f.submit t('submit.create'), class: 'btn btn-info'

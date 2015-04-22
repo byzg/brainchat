@@ -1,6 +1,8 @@
 class ChatsController < ApplicationController
   inherit_resources
   actions :index, :new, :create
+  respond_to :html, only: [:index, :new, :create]
+  respond_to :json, only: [:create]
   before_action :for_chat_need_friend, only: [:new, :create]
 
   def new
@@ -9,12 +11,16 @@ class ChatsController < ApplicationController
   end
 
   def create
-    create! do |_, failure|
-      if slash_request?
-        return render template: 'chats/create'
-      else
-        failure.html { return redirect_to :back, alert: resource.errors.full_messages }
-      end
+    create! do |success, failure|
+      if request.xhr?
+        json_answer = if resource.valid?
+          {new_chat: render_to_string(partial: 'chats/chat', object: resource)}
+        else
+          {errors: render_to_string(partial: 'devise/shared/error_messages')}
+        end
+        return render json: json_answer.merge(success: json_answer[:errors].nil?) 
+      end      
+      failure.html { return redirect_to new_chat_path, alert: resource.errors.full_messages }
     end
   end
 

@@ -3,7 +3,7 @@ class UsersController < InheritedResources::Base
   def create
     pass = SecureRandom.hex
     user = User.new(user_params.merge({password: pass, password_confirmation: pass}))
-    return redirect_to :back, alert: user.errors.full_messages unless user.valid?
+    return redirect_to new_user_path, alert: user.errors.full_messages unless user.valid?
     user.skip_confirmation_notification!
     user.save
     user.update_attribute(:created_by_user_id, current_user.id)

@@ -1,10 +1,7 @@
+@import "mixins"
 // index
 #chats-index
-  .media 
-    padding: 5px
-    border: 1px solid #ddd
-    border-radius: 5px
-    border-collapse: separate
+  @include bordered-media()
 
 // show
 #left_block, #right_block
